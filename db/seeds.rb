@@ -16,15 +16,22 @@ comments_per_recording = (3..9).to_a
 
 sound_file_url    = 'http://www.palmbeach.k12.fl.us/RooseveltMS/cavank/sounds/loops/Funky_loop.wav'
 test_tags         = ['forest', 'europe', 'binaural', 'stereo', 'mono', 'city', 'ocean']
+password = 'password'
 
-User.create(username: 'joe', email: 'josephcase@gmail.com', password: 'pw')
-User.create(username: 'will', email: 'william@wvwproductions.com', password: 'pw')
-User.create(username: 'andrew', email: 'theandrewkimm@gmail.com', password: 'pw')
+test_tags.each do |name|
+  Tag.create!(name: name)
+end
+
+tags  = Tag.all
+
+User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
+User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
+User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
 
 users_amount.times do
   User.create(username: Faker::Internet.user_name,
               email: Faker::Internet.email,
-              password: 'pw')
+              password: password)
 end
 
 users = User.all
@@ -36,7 +43,7 @@ recordings_amount.times do
                                 description: Faker::Hipster.paragraph(10),
                                 sound_file: sound_file_url)
 
-  available_tags = test_tags.shuffle
+  available_tags = tags.shuffle
   tags_per_recording.sample.times do
       RecordingTag.create!(recording: recording,
                           tag: available_tags.shift)
