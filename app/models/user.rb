@@ -3,4 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :recordings
+  has_many :likes
+  has_many :flags
+  has_many :comments
+  has_many :liked_recordings, through: :likes, source: :recording
+  has_many :flagged_recordings, through: :flags, source: :recording
+  has_many :commented_recordings, through: :comments, source: :recording
+
+  validates :username uniqueness: true
+
 end
