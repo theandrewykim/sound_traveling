@@ -10,8 +10,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :liked_recordings, through: :likes, source: :recording
   has_many :flagged_recordings, through: :flags, source: :recording
-  has_many :commented_recordings, through: :comments, source: :recording
 
-  validates :username uniqueness: true
+
+  validates :username, uniqueness: true
 
 end
