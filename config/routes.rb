@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'comments/new'
+
+  get 'comments/create'
+
+  get 'comments/edit'
+
+  get 'comments/update'
+
   resources :recordings
 
   devise_for :users
