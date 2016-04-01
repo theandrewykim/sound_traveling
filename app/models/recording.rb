@@ -13,4 +13,6 @@ class Recording < ActiveRecord::Base
 
   validates :title, :latitude, :longitude, :sound_file, presence: true
 
+
+
 end

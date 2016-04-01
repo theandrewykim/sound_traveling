@@ -14,15 +14,15 @@ Location.prototype.addListenerToMarker = function() {
   this.marker.addListener('click', function() {
     this.infowindow.open(this.map, this.marker);
   }.bind(this));
-}
+};
 
 Location.prototype.dataForUpload = function() {
   return {latitude: this.latitude, longitude: this.longitude, title: this.title};
-}
+};
 
 Location.prototype.saveToServer = function() {
-  $.ajax({data: this.dataForUpload()})
-}
+  $.ajax({data: this.dataForUpload()});
+};
 
 // var first = {latitude: 40.7060794, longitude:-74.00932130000001, title: "This is a building"}
 // var second = {latitude: 40.7064168, longitude:-74.0090889, description: "This is DBC"}
@@ -30,7 +30,6 @@ Location.prototype.saveToServer = function() {
 
 // var locations = [first,second]
 var map;
-var mapplaces = []
 var myCenter=new google.maps.LatLng(40.7064168,-74.0090889);
 var locObjects;
 
@@ -46,7 +45,7 @@ function initialize() {
   // position: mapProp.center,
   // });
 
-  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, map) })
+  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, map) });
 }
 
 
