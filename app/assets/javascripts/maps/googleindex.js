@@ -1,10 +1,11 @@
-function Location(latitude, longitude, description, map) {
+function Location(latitude, longitude, title, created_at, map) {
   this.latitude = latitude;
   this.longitude = longitude;
-  this.description = description;
+  this.title = title;
   this.map = map;
+  this.created_at = created_at;
   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
-  this.infowindow = new google.maps.InfoWindow({content: this.title});
+  this.infowindow = new google.maps.InfoWindow({content: this.title + ' on ' + this.created_at});
   this.marker.setMap(this.map);
   this.addListenerToMarker();
 }
@@ -16,14 +17,14 @@ Location.prototype.addListenerToMarker = function() {
 }
 
 Location.prototype.dataForUpload = function() {
-  return {latitude: this.latitude, longitude: this.longitude, description: this.description};
+  return {latitude: this.latitude, longitude: this.longitude, title: this.title};
 }
 
 Location.prototype.saveToServer = function() {
   $.ajax({data: this.dataForUpload()})
 }
 
-// var first = {latitude: 40.7060794, longitude:-74.00932130000001, description: "This is a building"}
+// var first = {latitude: 40.7060794, longitude:-74.00932130000001, title: "This is a building"}
 // var second = {latitude: 40.7064168, longitude:-74.0090889, description: "This is DBC"}
 
 
@@ -45,7 +46,7 @@ function initialize() {
   // position: mapProp.center,
   // });
 
-  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, map) })
+  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, map) })
 }
 
 
