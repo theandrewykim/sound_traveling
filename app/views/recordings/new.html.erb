@@ -1,2 +1,38 @@
+<<<<<<< HEAD
 <h1>Recordings#new</h1>
 <p>Find me in app/views/recordings/new.html.erb</p>
+=======
+<head>
+  <%= javascript_include_tag 'maps/googlenew' %>
+
+</head>
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+  <div class="form"%>
+  <%= form_for(@recording) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title%>
+  <%= f.label :description%>
+  <%= f.text_field :description, size: 50%>
+   <%= f.label :sound_file %>
+  <%= f.text_field :sound_file%>
+
+  <p><%=f.label :tags %><br>
+  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %><br></p>
+
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="route2" style="width:500px;height:380px;">
+</div>
+
+  <%=f.submit%>
+  <%end%>
+</div>
+</body>
+
+>>>>>>> andrew/recordingsnew
