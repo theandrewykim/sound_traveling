@@ -1,4 +1,7 @@
-class IndexController < ApplicationController
+class RecordingsController < ApplicationController
+  def index
+  end
+
   def new
   end
 
