@@ -1,4 +1,4 @@
-var recordings = []
+var recordings = [];
 function Location({latitude, longitude}) {
   this.latitude = latitude;
   this.longitude = longitude;
@@ -14,16 +14,16 @@ function initialize() {
 
 google.maps.event.addListener(map, 'click', function(e) {
         placeMarker(e.latLng, map);
-        var latitude = e.latLng.lat()
-        var longitude = e.latLng.lng()
+        var latitude = e.latLng.lat();
+        var longitude = e.latLng.lng();
 
 
-        if (recordings.length == 0) {
-           var location = new Location({latitude: latitude, longitude: longitude})
+        if (recordings.length === 0) {
+           var location = new Location({latitude: latitude, longitude: longitude});
 
-           recordings.push(location)
-           $(".new_recording").prepend("<input type='hidden' name='recording[latitude]' value="+location.latitude+" id= 'amihere' >")
-           $(".new_recording").prepend("<input type='hidden' name='recording[longitude]' value="+location.longitude+" >")
+           recordings.push(location);
+           $(".new_recording").prepend("<input type='hidden' name='recording[latitude]' value="+location.latitude+" id= 'amihere' >");
+           $(".new_recording").prepend("<input type='hidden' name='recording[longitude]' value="+location.longitude+" >");
 
 
         }
