@@ -28,6 +28,7 @@ gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'faker'
+gem 'rails_12factor', group: :production
 
 
 # Use ActiveModel has_secure_password
