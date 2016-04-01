@@ -7,6 +7,7 @@ class RecordingsController < ApplicationController
   end
 
   def update
+  end
 
   def new
     @recording = Recording.new
@@ -31,4 +32,5 @@ private
   def recording_params
     params.require(:recording).permit(:title, :longitude, :sound_file, :description, :latitude, :longitude)
   end
+
 end
