@@ -1,8 +1,11 @@
 <head>
   <%= javascript_include_tag 'maps/googleindex' %>
+
 </head>
 <div class="jumbotron">
   <h1>Welcome to Sound Traveling</h1>
   <p>Find me in app/views/welcome/index.html.erb</p>
+   <%= content_tag :div, class: "recording", data: {recordings: @recording} do %>
   <div id="googleMap" style="width:500px;height:380px;">
+    <% end %>
 </div>
