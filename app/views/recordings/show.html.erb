@@ -39,17 +39,23 @@
       <h4>85 Plays</h4>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-9">
-      <h3><%= @recording.title %></h3>
-      <p><%= @recording.description %></p>
+      <div>
+        <h3><%= @recording.title %></h3>
+        <p><%= @recording.description %></p>
+      </div>
+      <div class="comments">
+        <ul>
+          <%= render @recording.comments %>
+        </ul>
+      </div>
+
+
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="comments">
 
-
-  </div>
 </div>
 
 
