@@ -14,4 +14,5 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery.jplayer.min
+//= require flat.audio
 //= require_tree .
