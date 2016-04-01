@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @recording = Recording.all
+    @recordings = Recording.all
   end
 end
