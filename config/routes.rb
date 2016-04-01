@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'index/new'
+
+  get 'index/create'
+
+  get 'index/edit'
+
+  get 'index/update'
+
+  get 'index/show'
+
+  get 'index/delete'
+
+  get 'users/show'
+
   devise_for :users
   root 'welcome#index'
 
