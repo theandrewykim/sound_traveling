@@ -1,2 +1,62 @@
-<h1>Recordings#show</h1>
-<p>Find me in app/views/recordings/show.html.erb</p>
+<head>
+  <%= javascript_include_tag 'maps/googleindex' %>
+
+</head>
+
+<div class="row">
+
+    <%= content_tag :div, class: "recording", data: {recordings: @recording} do %>
+    <div id="googleMap" style="width:100%;height:380px;">
+    <% end %>
+    </div>
+
+  <div class="responsive-wrapper">
+    <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+
+    <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
+      <div class="jp-play-control jp-control">
+        <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
+      </div>
+      <div class="jp-bar">
+        <div class="jp-seek-bar jp-seek-bar-display"></div>
+        <div class="jp-seek-bar">
+          <div class="jp-play-bar"></div>
+          <div class="jp-details"><span class="jp-title" aria-label="title"></span></div>
+          <div class="jp-timing"><span class="jp-duration" role="timer" aria-label="duration"></span></div>
+        </div>
+      </div>
+      <div class="jp-no-solution">
+        Media Player Error<br />
+        Update your browser or Flash plugin
+      </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row content">
+    <div class="col-xs-6 col-md-3">
+      <h4>85 Likes</h4>
+      <h4>85 Plays</h4>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-9">
+      <h3><%= @recording.title %></h3>
+      <p><%= @recording.description %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="comments">
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
