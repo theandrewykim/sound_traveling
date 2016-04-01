@@ -19,7 +19,7 @@ google.maps.event.addListener(map, 'click', function(e) {
 
 
         if (recordings.length === 0) {
-           var location = new RecordingLoc({latitude: latitude, longitude: longitude});
+           var location = new RecordingLoc(latitude, longitude);
 
            recordings.push(location);
            $(".new_recording").prepend("<input type='hidden' name='recording[latitude]' value="+location.latitude+" id= 'amihere' >");
