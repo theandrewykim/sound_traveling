@@ -41,7 +41,7 @@ recordings_amount.times do
                                 latitude: Faker::Address.latitude,
                                 longitude: Faker::Address.longitude,
                                 description: Faker::Hipster.paragraph(10),
-                                sound_file: sound_file_url)
+                                )
 
   available_tags = tags.shuffle
   tags_per_recording.sample.times do

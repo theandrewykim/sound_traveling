@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331203924) do
+ActiveRecord::Schema.define(version: 20160402141538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,14 +58,17 @@ ActiveRecord::Schema.define(version: 20160331203924) do
   add_index "recording_tags", ["tag_id"], name: "index_recording_tags_on_tag_id", using: :btree
 
   create_table "recordings", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.float    "latitude",    null: false
-    t.float    "longitude",   null: false
+    t.string   "title",              null: false
+    t.float    "latitude",           null: false
+    t.float    "longitude",          null: false
     t.text     "description"
-    t.string   "sound_file",  null: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "sound_file_name"
+    t.string   "sound_content_type"
+    t.integer  "sound_file_size"
+    t.datetime "sound_updated_at"
   end
 
   create_table "tags", force: :cascade do |t|
