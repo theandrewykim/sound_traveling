@@ -4,8 +4,9 @@ jQuery(document).ready(function($) {
 
   var data = $('.recording_params').data();
 
+
   var playerParams = {
-        title: data.title,
+        title: data.recordingname,
         mp3: data.url
       }
 
