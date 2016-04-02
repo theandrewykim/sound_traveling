@@ -16,6 +16,8 @@ class Recording < ActiveRecord::Base
   has_attached_file :sound
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
+  acts_as_taggable
+
 
   def player_params
     {recordingname: self.title,

@@ -21,6 +21,10 @@
     <%= f.label :description %>
     <%= f.text_field :description, size: 50%>
   </div>
+  <div>
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list %>
+  </div>
 
   <div>
     <%= f.label :sound %>
@@ -28,7 +32,7 @@
   </div>
 
   <div id="route2" style="width:50%;height:380px;">
-  
+
 </div>
 
   <%=f.submit%>
@@ -65,8 +69,8 @@ google.maps.event.addListener(map, 'click', function(e) {
 
 
         if(recordings.length > 0) {
-            recordings = []  
-            $(".reclocation").remove() 
+            recordings = []
+            $(".reclocation").remove()
 
 
         }
