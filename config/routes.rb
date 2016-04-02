@@ -1,14 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'comments/new'
-
-  get 'comments/create'
-
-  get 'comments/edit'
-
-  get 'comments/update'
-
   resources :recordings
+  resources :users, only: [:show]
 
   devise_for :users
   root 'welcome#index'
