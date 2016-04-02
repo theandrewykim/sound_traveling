@@ -39,36 +39,39 @@ jQuery(document).ready(function($) {
   });
 
 
-function initMap() {
 
-  var styleArray = [
-    {
-      featureType: "all",
-      stylers: [
-       { saturation: -80 }
-      ]
-    },{
-      featureType: "road.arterial",
-      elementType: "geometry",
-      stylers: [
-        { hue: "#00ffee" },
-        { saturation: 50 }
-      ]
-    },{
-      featureType: "poi.business",
-      elementType: "labels",
-      stylers: [
-        { visibility: "off" }
-      ]
-    }
-  ];
-  // Create a map object and specify the DOM element for display.
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: data.latitude, lng: data.longitude},
-    scrollwheel: false,
-    zoom: 8
-  });
-}
+
+// function initMap() {
+
+//   var styleArray = [
+//     {
+//       featureType: "all",
+//       stylers: [
+//        { saturation: -80 }
+//       ]
+//     },{
+//       featureType: "road.arterial",
+//       elementType: "geometry",
+//       stylers: [
+//         { hue: "#00ffee" },
+//         { saturation: 50 }
+//       ]
+//     },{
+//       featureType: "poi.business",
+//       elementType: "labels",
+//       stylers: [
+//         { visibility: "off" }
+//       ]
+//     }
+//   ];
+//   // Create a map object and specify the DOM element for display.
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     center: {lat: data.latitude, lng: data.longitude},
+//     scrollwheel: false,
+//     zoom: 8
+//   });
+// }
+
 
 
 

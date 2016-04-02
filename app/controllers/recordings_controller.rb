@@ -33,7 +33,7 @@ class RecordingsController < ApplicationController
 
 private
   def recording_params
-    params.require(:recording).permit(:title,:sound, :description)
+    params.require(:recording).permit(:title,:sound, :description, :latitude, :longitude)
   end
 
 end

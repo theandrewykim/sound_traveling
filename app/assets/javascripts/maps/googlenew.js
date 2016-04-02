@@ -4,6 +4,10 @@ function RecordingLoc(latitude, longitude) {
   this.longitude = longitude;
 }
 
+
+$(document).ready(function()
+{
+
 function initialize() {
   var mapProp = {
     zoom:3,
@@ -42,4 +46,7 @@ google.maps.event.addListener(map, 'click', function(e) {
 
 }
 google.maps.event.addDomListener(window, 'load', initialize);
+
+})
+
 
