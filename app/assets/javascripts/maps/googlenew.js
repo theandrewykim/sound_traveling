@@ -10,7 +10,7 @@ $(document).ready(function()
 
 function initialize() {
   var mapProp = {
-    zoom:3,
+    zoom:2,
     center: new google.maps.LatLng(40.7064168,-74.0090889),
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -22,13 +22,14 @@ google.maps.event.addListener(map, 'click', function(e) {
         var longitude = e.latLng.lng();
 
 
+
         if (recordings.length === 0) {
            var location = new RecordingLoc(latitude, longitude);
 
            recordings.push(location);
            $(".new_recording").prepend("<input type='hidden' name='recording[latitude]' value="+location.latitude+" id= 'amihere' >");
            $(".new_recording").prepend("<input type='hidden' name='recording[longitude]' value="+location.longitude+" >");
-
+           debugger
 
         }
 
