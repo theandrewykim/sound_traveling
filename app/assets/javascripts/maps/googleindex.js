@@ -51,3 +51,4 @@
 
 // google.maps.event.addDomListener(window, 'load', initialize);
 // //set var marker, probably going to use react to continuously update marker collection to iterate through
+

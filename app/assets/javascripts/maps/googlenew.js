@@ -1,3 +1,10 @@
+
+// var recordings = [];
+// function RecordingLoc(latitude, longitude) {
+//   // this.latitude = latitude;
+//   this.longitude = longitude;
+// }
+
 // var recordings = [];
 // function RecordingLoc(latitude, longitude) {
 //   this.latitude = latitude;

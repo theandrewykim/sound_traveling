@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :liked_recordings, through: :likes, source: :recording
   has_many :flagged_recordings, through: :flags, source: :recording
 
-
   validates :username, uniqueness: true
 
 end
