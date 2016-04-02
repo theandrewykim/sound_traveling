@@ -31,6 +31,7 @@ gem 'faker'
 gem 'rails_12factor', group: :production
 
 gem 'figaro'
+gem 'kronic'
 
 
 # Use ActiveModel has_secure_password
