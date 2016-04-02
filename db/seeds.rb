@@ -18,11 +18,11 @@ sound_file_url    = 'http://www.palmbeach.k12.fl.us/RooseveltMS/cavank/sounds/lo
 test_tags         = ['forest', 'europe', 'binaural', 'stereo', 'mono', 'city', 'ocean']
 password = 'password'
 
-test_tags.each do |name|
-  Tag.create!(name: name)
-end
+# test_tags.each do |name|
+#   Tag.create!(name: name)
+# end
 
-tags  = Tag.all
+# tags  = Tag.all
 
 User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
 User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
@@ -43,11 +43,11 @@ recordings_amount.times do
                                 description: Faker::Hipster.paragraph(10),
                                 )
 
-  available_tags = tags.shuffle
-  tags_per_recording.sample.times do
-      RecordingTag.create!(recording: recording,
-                          tag: available_tags.shift)
-  end
+  # available_tags = tags.shuffle
+  # tags_per_recording.sample.times do
+  #     RecordingTag.create!(recording: recording,
+  #                         tag: available_tags.shift)
+  # end
 
   likes_per_recording.sample.times do
     Like.create!(user: users.sample,
