@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script src="http://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY']%> "></script>
 
   <!-- Bootstrap Mobile Tag -->
   <meta name="viewport" content="width=device-width, initial-scale=1">

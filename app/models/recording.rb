@@ -17,4 +17,12 @@ class Recording < ActiveRecord::Base
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
 
+  def player_params
+    {title: self.title,
+     url: self.sound.url,
+    latitude: self.latitude,
+    longitude: self.longitude}
+  end
+
+
 end

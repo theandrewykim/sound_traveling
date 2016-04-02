@@ -2,19 +2,17 @@
 // All this logic will automatically be available in application.js.
 jQuery(document).ready(function($) {
 
-  console.log("WE GOT HERE!!")
+  var data = $('.recording_params').data();
 
-  var js_obj = <%= @recording.to_json %>
+  var playerParams = {
+        title: data.title,
+        mp3: data.url
+      }
 
-  debugger
+  $("#jquery_jplayer_audio_1").jPlayer({
 
-  $("#jquery_jplayer_audio_4").jPlayer({
     ready: function(event) {
-      $(this).jPlayer("setMedia", {
-        title: "Bus in india",
-        mp3: "http://s3.amazonaws.com/demotracks/recordings/sounds/000/000/039/original/bus-india.mp3?1459612624",
-        oga: "http://jplayer.org/audio/ogg/Miaow-02-Hidden.ogg"
-      });
+      $(this).jPlayer("setMedia", playerParams );
     },
     play: function() { // Avoid multiple jPlayers playing together.
       $(this).jPlayer("pauseOthers");
@@ -39,5 +37,40 @@ jQuery(document).ready(function($) {
     },
     wmode: "window"
   });
+
+
+function initMap() {
+
+  var styleArray = [
+    {
+      featureType: "all",
+      stylers: [
+       { saturation: -80 }
+      ]
+    },{
+      featureType: "road.arterial",
+      elementType: "geometry",
+      stylers: [
+        { hue: "#00ffee" },
+        { saturation: 50 }
+      ]
+    },{
+      featureType: "poi.business",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+  // Create a map object and specify the DOM element for display.
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: data.latitude, lng: data.longitude},
+    scrollwheel: false,
+    zoom: 8
+  });
+}
+
+
+
 });
 
