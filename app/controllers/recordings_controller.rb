@@ -17,8 +17,6 @@ class RecordingsController < ApplicationController
     @recording = Recording.new(recording_params)
     if  @recording.save
       redirect_to root_path
-    else
-      binding.pry
     end
   end
 
