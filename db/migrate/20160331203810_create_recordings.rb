@@ -6,7 +6,6 @@ class CreateRecordings < ActiveRecord::Migration
       t.float :longitude, null: false
       t.text  :description
 
-
       t.references :user
 
       t.timestamps null: false
