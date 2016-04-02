@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   resources :recordings
-  resources :users, only: [:show]
 
   devise_for :users
   root 'welcome#index'

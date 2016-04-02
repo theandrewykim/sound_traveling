@@ -33,6 +33,10 @@ gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'kronic'
 
+gem 'geocoder'
+
+gem 'acts-as-taggable-on'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
