@@ -4,24 +4,9 @@ jQuery(document).ready(function($) {
 
   var data = $('.recording_params').data();
 
-  var map;
-
-  function initMap() {
-
-   map = new google.maps.Map(document.getElementById('gmap'), {
-    center: {lat: -34.397, lng: 150.644},
-    scrollwheel: false,
-    zoom: 8
-  });
-
-
-}
-
-
-
 
   var playerParams = {
-        title: data.title,
+        title: data.recordingname,
         mp3: data.url
       }
 

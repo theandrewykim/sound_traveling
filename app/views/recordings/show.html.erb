@@ -1,9 +1,11 @@
 <head>
-    <%= javascript_include_tag 'maps/googleshow' %>
 </head>
+<body>
 <div class="row">
-
-    <div id="googleMap" style="width:100%;height:380px;"></div>
+  <%= content_tag :div, class: "recording", data: {recordings: @recording} do %>
+    <div id="googleMap" style="width:100%;height:380px;">
+    </div>
+    <%end%>
 
   <div class="responsive-wrapper">
     <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
@@ -49,9 +51,25 @@
   </div>
 </div>
 
-
 <%= content_tag :div, class: "recording_params", data: @recording.player_params do %>
 <% end %>
+</body>
 
 
 
+ <script>
+        function initialize() {
+  var data = $('.recording_params').data()
+  var mapProp = {
+    center:new google.maps.LatLng(data.latitude, data.longitude),
+    zoom:3,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude)});
+    marker.setMap(map)
+            }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+      </script>
