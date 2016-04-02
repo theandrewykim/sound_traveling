@@ -18,7 +18,7 @@ class Recording < ActiveRecord::Base
 
 
   def player_params
-    {title: self.title,
+    {recordingname: self.title,
      url: self.sound.url,
     latitude: self.latitude,
     longitude: self.longitude}

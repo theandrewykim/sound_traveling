@@ -15,8 +15,6 @@ class RecordingsController < ApplicationController
 
   def create
     @recording = Recording.new(recording_params)
-    @recording.latitude = 37.5967
-    @recording.longitude = 26.1123
     if  @recording.save
       redirect_to root_path
     else
