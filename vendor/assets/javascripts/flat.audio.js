@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {
+
+
 	$("#jquery_jplayer_audio_1").jPlayer({
 		ready: function(event) {
 			$(this).jPlayer("setMedia", {
