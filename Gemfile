@@ -26,9 +26,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '<2.0'
 gem 'faker'
 gem 'rails_12factor', group: :production
+
+gem 'figaro'
 
 
 # Use ActiveModel has_secure_password

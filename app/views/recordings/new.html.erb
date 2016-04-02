@@ -13,19 +13,21 @@
 
   <div class="form"%>
   <%= form_for(@recording) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title%>
-  <%= f.label :description%>
-  <%= f.text_field :description, size: 50%>
-   <%= f.label :sound_file %>
-  <%= f.text_field :sound_file%>
 
-  <p><%=f.label :tags %><br>
-  <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) %><br></p>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title%>
+  </div>
 
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="route2" style="width:500px;height:380px;">
-</div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description, size: 50%>
+  </div>
+
+  <div>
+    <%= f.label :sound %>
+    <%= f.file_field :sound %>
+  </div>
 
   <%=f.submit%>
   <%end%>

@@ -5,7 +5,6 @@ class CreateRecordings < ActiveRecord::Migration
       t.float :latitude, null: false
       t.float :longitude, null: false
       t.text  :description
-      t.string :sound_file, null: false
 
       t.references :user
 

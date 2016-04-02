@@ -11,7 +11,7 @@
     </div>
 
   <div class="responsive-wrapper">
-    <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+    <div id="jquery_jplayer_audio_2" class="jp-jplayer"></div>
 
     <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
       <div class="jp-play-control jp-control">
@@ -54,11 +54,49 @@
   </div>
 </div>
 
-<div class="container">
+<%= javascript_tag '
 
-</div>
+jQuery(document).ready(function($) {
+
+  console.log("WE GOT HERE!!")
+
+  var js_obj = <%= @recording.to_json %>
 
 
+  $("#jquery_jplayer_audio_2").jPlayer({
+    ready: function(event) {
+      $(this).jPlayer("setMedia", {
+        title: "Bus in india",
+        mp3: "http://s3.amazonaws.com/demotracks/recordings/sounds/000/000/039/original/bus-india.mp3?1459612624",
+        oga: "http://jplayer.org/audio/ogg/Miaow-02-Hidden.ogg"
+      });
+    },
+    play: function() { // Avoid multiple jPlayers playing together.
+      $(this).jPlayer("pauseOthers");
+    },
+    timeFormat: {
+      padMin: false
+    },
+    swfPath: "js",
+    supplied: "mp3",
+    cssSelectorAncestor: "#jp_container_audio_1",
+    useStateClassSkin: true,
+    autoBlur: false,
+    smoothPlayBar: true,
+    remainingDuration: true,
+    keyEnabled: true,
+    keyBindings: {
+      // Disable some of the default key controls
+      loop: null,
+      muted: null,
+      volumeUp: null,
+      volumeDown: null
+    },
+    wmode: "window"
+  });
+});
+
+'%>
 
 
 

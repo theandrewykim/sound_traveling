@@ -1,9 +1,11 @@
 jQuery(document).ready(function($) {
+
+
 	$("#jquery_jplayer_audio_1").jPlayer({
 		ready: function(event) {
 			$(this).jPlayer("setMedia", {
-				title: "Cafe in Berlin",
-				mp3: "http://jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
+				title: "Bus in india",
+				mp3: "http://s3.amazonaws.com/demotracks/recordings/sounds/000/000/039/original/bus-india.mp3?1459612624",
 				oga: "http://jplayer.org/audio/ogg/Miaow-02-Hidden.ogg"
 			});
 		},
