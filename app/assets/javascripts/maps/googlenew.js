@@ -1,6 +1,6 @@
 var recordings = [];
 function RecordingLoc(latitude, longitude) {
-  this.latitude = latitude;
+  // this.latitude = latitude;
   this.longitude = longitude;
 }
 

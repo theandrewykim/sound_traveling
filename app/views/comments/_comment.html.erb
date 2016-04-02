@@ -1,4 +1,6 @@
 <li>
-  <h5><%= comment.user.username %></h5>
-  <p><%= comment.body %></p>
+  <div class="row">
+    <h5><%= link_to comment.user.username %> says: </h5>
+  </div>
+    <p><%= comment.body %></p>
 </li>

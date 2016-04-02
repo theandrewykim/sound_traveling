@@ -30,7 +30,7 @@ Location.prototype.saveToServer = function() {
 
 // var locations = [first,second]
 var map;
-var myCenter=new google.maps.LatLng(40.7064168,-74.0090889);
+var myCenter= new google.maps.Map.LatLng(40.7064168,-74.0090889);
 var locObjects;
 
 function initialize() {
