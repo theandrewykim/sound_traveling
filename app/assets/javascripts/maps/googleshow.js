@@ -2,7 +2,7 @@
   var data = $('.recording_params').data()
   var mapProp = {
     center:new google.maps.LatLng(data.latitude, data.longitude),
-    zoom:3,
+    zoom: 8,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
