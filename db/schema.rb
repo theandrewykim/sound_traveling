@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(version: 20160402230418) do
 
   create_table "recordings", force: :cascade do |t|
     t.string   "title",              null: false
+    t.string   "address"
+    t.string   "city"
+    t.string   "zipcode"
+    t.string   "country"
     t.float    "latitude",           null: false
     t.float    "longitude",          null: false
     t.text     "description"

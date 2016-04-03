@@ -13,14 +13,15 @@
   </ul>
 </div>
 <script>
-  function Location(latitude, longitude, title, created_at, map) {
+  function Location(latitude, longitude, title, created_at, id, map) {
   this.latitude = latitude;
   this.longitude = longitude;
   this.title = title;
   this.map = map;
+  this.id = id;
   this.created_at = created_at;
   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
-  this.infowindow = new google.maps.InfoWindow({content: this.title + ' on ' + this.created_at});
+  this.infowindow = new google.maps.InfoWindow({content: '<a href="recordings/'+this.id+'">'+this.title+'</a>'});
   this.marker.setMap(this.map);
   this.addListenerToMarker();
 }
@@ -53,7 +54,7 @@ function initialize() {
   map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 
-  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, map) });
+  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, location.id, map) });
 }
 
 
