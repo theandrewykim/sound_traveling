@@ -1,5 +1,8 @@
 class RecordingsController < ApplicationController
   def index
+    @q = Recording.ransack(params[:q])
+    @recordings = @q.result(distinct: true)
+    render 'welcome/index'
   end
 
 

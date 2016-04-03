@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+
 
 
 
@@ -37,6 +37,8 @@ gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 
 
+
+gem 'ransack'
 
 
 # Use ActiveModel has_secure_password
