@@ -9,9 +9,12 @@
 
   <!-- Bootstrap Mobile Tag -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 </head>
+
+<header>
+  <%= yield(:search) %>
+</header>
+
 <body>
   <%= render 'layouts/nav'%>
   <div class="container-fluid">

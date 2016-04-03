@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @recordings = Recording.all
+    @q = Recording.ransack(params[:q])
+    @recordings = @q.result(distinct: true)
   end
 end
