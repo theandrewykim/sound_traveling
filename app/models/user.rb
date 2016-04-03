@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
 
   validates :username, uniqueness: true
 
+  acts_as_voter
+
 end

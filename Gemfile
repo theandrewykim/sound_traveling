@@ -34,10 +34,9 @@ gem 'rails_12factor', group: :production
 gem 'figaro'
 gem 'kronic'
 gem 'acts-as-taggable-on'
+gem 'acts_as_votable'
 
-gem 'geocoder'
 
-gem 'acts-as-taggable-on'
 
 gem 'ransack'
 
