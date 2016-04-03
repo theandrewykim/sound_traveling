@@ -4,7 +4,7 @@
 <% content_for :search do %>
   <div class="search">
   <%= search_form_for @q do |f| %>
-    <%= f.search_field :title_or_description_or_tags_name_cont %>
+    <%= f.search_field :title_or_description_or_city_or_country_or_tags_name_cont %>
   </div>
     <div class="submit-search">
       <%= f.submit "Search" %>
