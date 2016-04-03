@@ -1,13 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 users_amount      = 0
-recordings_amount = 30
+recordings_amount = 10
 tags_per_recording = (0..4).to_a
 likes_per_recording = (5..40).to_a
 flags_per_recording = (0..5).to_a
@@ -18,11 +10,7 @@ sound_file_url    = 'http://www.palmbeach.k12.fl.us/RooseveltMS/cavank/sounds/lo
 test_tags         = ['forest', 'europe', 'binaural', 'stereo', 'mono', 'city', 'ocean']
 password = 'password'
 
-# test_tags.each do |name|
-#   Tag.create!(name: name)
-# end
 
-# tags  = Tag.all
 
 User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
 User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
@@ -37,17 +25,22 @@ end
 users = User.all
 
 recordings_amount.times do
+
+  tag_list = 'audio'
+  tag_shuffle = test_tags.shuffle
+  tags_per_recording.sample.times do
+     tag_list += ', ' + tag_shuffle.shift
+  end
+
+
   recording = Recording.create!(title: Faker::Book.title,
                                 latitude: Faker::Address.latitude,
                                 longitude: Faker::Address.longitude,
                                 description: Faker::Hipster.paragraph(10),
+                                tag_list: tag_list
                                 )
 
-  # available_tags = tags.shuffle
-  # tags_per_recording.sample.times do
-  #     RecordingTag.create!(recording: recording,
-  #                         tag: available_tags.shift)
-  # end
+
 
   likes_per_recording.sample.times do
     Like.create!(user: users.sample,
