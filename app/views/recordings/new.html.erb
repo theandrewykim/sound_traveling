@@ -21,6 +21,10 @@
     <%= f.label :description %>
     <%= f.text_field :description, size: 50%>
   </div>
+  <div>
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list %>
+  </div>
 
   <div>
     <%= f.label :sound %>
@@ -29,7 +33,7 @@
 
   <input id="pac-input" class="controls" type="text" placeholder="Search Box">
   <div id="route2" style="width:50%;height:380px;">
-  
+
 </div>
 
   <%=f.submit%>
@@ -84,8 +88,8 @@ google.maps.event.addListener(map, 'click', function(e) {
         var latitude = marker.position.lat();
         var longitude = marker.position.lng();
               if(recordings.length > 0) {
-             recordings = []  
-            $(".reclocation").remove() 
+             recordings = []
+            $(".reclocation").remove()
 
 
         }
@@ -110,7 +114,7 @@ google.maps.event.addListener(map, 'click', function(e) {
       markerarray= []
     var anothermarker = placeMarker(places[0].geometry.location, map)
     markerarray.push(anothermarker)
-   
+
 
   }
 
