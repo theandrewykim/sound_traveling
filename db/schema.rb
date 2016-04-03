@@ -27,32 +27,12 @@ ActiveRecord::Schema.define(version: 20160403173126) do
   add_index "comments", ["recording_id"], name: "index_comments_on_recording_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "flags", force: :cascade do |t|
-    t.integer  "recording_id", null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "flags", ["recording_id"], name: "index_flags_on_recording_id", using: :btree
-  add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
-
-  create_table "likes", force: :cascade do |t|
-    t.integer  "recording_id", null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "likes", ["recording_id"], name: "index_likes_on_recording_id", using: :btree
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
-
   create_table "recordings", force: :cascade do |t|
     t.string   "title",              null: false
     t.float    "latitude",           null: false
     t.float    "longitude",          null: false
     t.text     "description"
-    t.integer  "user_id"
+    t.integer  "user_id",            null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "sound_file_name"
@@ -60,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160403173126) do
     t.integer  "sound_file_size"
     t.datetime "sound_updated_at"
   end
+
+  add_index "recordings", ["user_id"], name: "index_recordings_on_user_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

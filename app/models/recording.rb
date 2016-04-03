@@ -12,12 +12,13 @@ class Recording < ActiveRecord::Base
   has_many :like_users, through: :likes, source: :user
 
   validates :title, presence: true
+  validates :user, presence: true
 
   has_attached_file :sound
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
   acts_as_taggable
-  acts_as_voteable
+  acts_as_votable
 
 
   def player_params
