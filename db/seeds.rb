@@ -1,4 +1,4 @@
-users_amount      = 0
+users_amount      = 5
 recordings_amount = 10
 tags_per_recording = (0..4).to_a
 likes_per_recording = (5..40).to_a
@@ -17,9 +17,9 @@ User.create!(username: 'will', email: 'william@wvwproductions.com', password: pa
 User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
 
 users_amount.times do
-  User.create(username: Faker::Internet.user_name,
-              email: Faker::Internet.email,
-              password: password)
+  User.create!(username: Faker::Internet.user_name,
+               email: Faker::Internet.email,
+               password: password)
 end
 
 users = User.all
@@ -37,15 +37,14 @@ recordings_amount.times do
                                 latitude: Faker::Address.latitude,
                                 longitude: Faker::Address.longitude,
                                 description: Faker::Hipster.paragraph(10),
-                                tag_list: tag_list
+                                tag_list: tag_list,
+                                user: users.sample
                                 )
 
 
 
   likes_per_recording.sample.times do
-    Like.create!(user: users.sample,
-                recording: recording
-                )
+    recording.liked_by (users.sample)
   end
 
   flags_per_recording.sample.times do

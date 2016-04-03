@@ -27,6 +27,18 @@ class RecordingsController < ApplicationController
   def delete
   end
 
+  def like
+    @recording = Recording.find(params[:id])
+    @recording.liked_by current_user
+    redirect_to @recording
+  end
+
+  def unlike
+    @recording = Recording.find(params[:id])
+    @recording.unliked_by current_user
+    redirect_to @recording
+  end
+
 private
   def recording_params
     params.require(:recording).permit(:title,:sound, :description, :latitude, :longitude, :tag_list)
