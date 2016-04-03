@@ -20,21 +20,23 @@ class Recording < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_votable
+  acts_as_commentable
 
-reverse_geocoded_by :latitude, :longitude do |obj,results|
-  if geo = results.first
-    obj.city    = geo.city
-    obj.zipcode = geo.postal_code
-    obj.country = geo.country_code
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.zipcode = geo.postal_code
+      obj.country = geo.country_code
+    end
   end
-end
-after_validation :reverse_geocode
+
+  after_validation :reverse_geocode
 
   def player_params
     {recordingname: self.title,
      url: self.sound.url,
-    latitude: self.latitude,
-    longitude: self.longitude}
+     latitude: self.latitude,
+     longitude: self.longitude}
   end
 
 

@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  def show
+  end
+
   def new
   end
 
@@ -9,5 +12,8 @@ class CommentsController < ApplicationController
   end
 
   def update
+  end
+
+  def delete
   end
 end
