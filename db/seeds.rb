@@ -47,12 +47,6 @@ recordings_amount.times do
     recording.liked_by (users.sample)
   end
 
-  flags_per_recording.sample.times do
-    Flag.create!(user: users.sample,
-                recording: recording
-                )
-  end
-
   comments_per_recording.sample.times do
     Comment.create!(user: users.sample,
                     recording: recording,
