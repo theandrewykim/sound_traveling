@@ -16,3 +16,23 @@ body {
   padding-bottom: 25px;
   border-bottom: 1px solid gray;
 }
+
+
+.tag {
+  display: inline;
+  background-color: #B0BEC5;
+  padding: 7px;
+  margin-right: 10px;
+  border-radius: 4px
+
+}
+
+.tag:hover {
+  background-color: #CFD8DC;
+}
+
+.tag a, .tag a:hover {
+  color: #263238;
+  text-decoration: none;
+}
+
