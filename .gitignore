@@ -15,7 +15,3 @@ public/assets
 
 # Ignore application configuration
 /config/application.yml
-
-/config/database.yml
-host: localhost
-port: 5432
