@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
+gem 'geocoder'
 gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -32,6 +33,10 @@ gem 'rails_12factor', group: :production
 
 gem 'figaro'
 gem 'kronic'
+gem 'acts-as-taggable-on'
+
+gem 'geocoder'
+
 gem 'acts-as-taggable-on'
 
 
