@@ -1,5 +1,5 @@
 users_amount      = 0
-recordings_amount = 30
+recordings_amount = 10
 tags_per_recording = (0..4).to_a
 likes_per_recording = (5..40).to_a
 flags_per_recording = (0..5).to_a
@@ -26,10 +26,10 @@ users = User.all
 
 recordings_amount.times do
 
-  tag_list = ''
+  tag_list = 'audio'
   tag_shuffle = test_tags.shuffle
   tags_per_recording.sample.times do
-     tag_list += tag_shuffle.shift
+     tag_list += ', ' + tag_shuffle.shift
   end
 
 
