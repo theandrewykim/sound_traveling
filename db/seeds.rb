@@ -1,20 +1,31 @@
+create_admins = true
+
 users_amount      = 5
-recordings_amount = 10
-tags_per_recording = (0..4).to_a
+recordings_amount = 20
+
+additional_tag_amount  = 15
+
+tags_per_recording = (2..6).to_a
 likes_per_recording = (5..40).to_a
 flags_per_recording = (0..5).to_a
 comments_per_recording = (3..9).to_a
+additional_tag_amount  = 10
 
 
 sound_file_url    = 'http://www.palmbeach.k12.fl.us/RooseveltMS/cavank/sounds/loops/Funky_loop.wav'
 test_tags         = ['forest', 'europe', 'binaural', 'stereo', 'mono', 'city', 'ocean']
 password = 'password'
 
+additional_tag_amount.times do
+  test_tags << Faker::Address.city_prefix
+end
 
 
-User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
-User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
-User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
+if create_admins == true
+  User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
+  User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
+  User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
+end
 
 users_amount.times do
   User.create!(username: Faker::Internet.user_name,
