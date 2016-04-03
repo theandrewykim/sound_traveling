@@ -48,10 +48,10 @@ recordings_amount.times do
   end
 
   comments_per_recording.sample.times do
-    Comment.create!(user: users.sample,
-                    recording: recording,
-                    body: Faker::Hipster.paragraph(6)
-                    )
+
+  recording.comments.create!(user: users.sample,
+                            body: Faker::Hipster.paragraph(6)
+                            )
   end
 
 end
