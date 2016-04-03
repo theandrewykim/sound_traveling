@@ -17,6 +17,7 @@ class Recording < ActiveRecord::Base
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
   acts_as_taggable
+  acts_as_voteable
 
 
   def player_params
