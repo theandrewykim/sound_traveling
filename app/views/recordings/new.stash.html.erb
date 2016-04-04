@@ -1,0 +1,30 @@
+  <div class="form"%>
+  <%= form_for(@recording) do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title%>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description, size: 50%>
+  </div>
+  <div>
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list %>
+  </div>
+
+  <div>
+    <%= f.label :sound %>
+    <%= f.file_field :sound %>
+  </div>
+
+  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+  <div id="route2" style="width:50%;height:380px;">
+
+</div>
+
+  <%=f.submit%>
+  <%end%>
+</div>

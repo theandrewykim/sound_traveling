@@ -1,45 +1,44 @@
 
-<head>
-</head>
-<body>
-  <br>
-  <br>
-  <br>
-  <br>
+
+
+<div class="container"> <br />
+    <div class="row">
+      <div class="col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Upload files</strong> <small> </small></div>
+        <div class="panel-body">
+
+          <div class="input-group image-preview">
+
+            <input placeholder="" type="text" class="form-control image-preview-filename" disabled="disabled">
+            <!-- don't give a name === doesn't send on POST/GET -->
+            <span class="input-group-btn">
+            <!-- image-preview-clear button -->
+            <button type="button" class="btn btn-default image-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
+            <!-- image-preview-input -->
+            <div class="btn btn-default image-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="image-preview-input-title">Browse</span>
+              <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
+              <!-- rename it -->
+            </div>
+            <button type="button" class="btn btn-labeled btn-default"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
+            </span>
+
+          </div>
+          <!-- /input-group image-preview [TO HERE]-->
+
+          <br />
 
 
 
-  <div class="form"%>
-  <%= form_for(@recording) do |f| %>
-
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title%>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description, size: 50%>
-  </div>
-  <div>
-    <%= f.label :tag_list, "Tags (separated by commas)" %>
-    <%= f.text_field :tag_list %>
-  </div>
-
-  <div>
-    <%= f.label :sound %>
-    <%= f.file_field :sound %>
-  </div>
-
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="route2" style="width:50%;height:380px;">
-
 </div>
 
-  <%=f.submit%>
-  <%end%>
-</div>
-</body>
+
+
+
   <script>
   var recordings = [];
   var markerarray = []
