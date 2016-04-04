@@ -8,10 +8,14 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :flags
   has_many :comments
-  has_many :liked_recordings, through: :likes, source: :recording
-  has_many :flagged_recordings, through: :flags, source: :recording
-
-  validates :username, uniqueness: true
+  has_many :active_relationships,  class_name:  "Relationship",
+                                   foreign_key: "follower_id",
+                                   dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy
+  has_many :following, through: :active_relationships,  source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   acts_as_voter
 

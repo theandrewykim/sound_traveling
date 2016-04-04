@@ -40,5 +40,27 @@ jQuery(document).ready(function($) {
   });
 
 
+// $(".container").on("click","#like-container", function(e) {
+//   var data = $('.recording').data().recordings.id
+//   var $container = $("#like-container").parent()
+//   e.preventDefault()
+//    $.ajax({
+//         type: 'PUT',
+//         url: data+"/unlike",
+//         data: $(this).serialize()
+
+// }).done(function(response){
+//   debugger
+//   $("#like-container").remove()
+//   $container.prepend(response)
+
+
+
+// })
+//  })
+
+
+
+
 });
 

@@ -1,3 +1,6 @@
+<head>
+   <%= javascript_include_tag 'markerclusterer' %>
+</head>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -50,7 +53,8 @@
   this.map = map;
   this.id = id;
   this.created_at = created_at;
-  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
+  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude),
+    icon: 'http://www120.lunapic.com/editor/working/145980453672967?4703904781'});
   this.infowindow = new google.maps.InfoWindow({content: '<a href="recordings/'+this.id+'">'+this.title+'</a>'});
   this.marker.setMap(this.map);
   this.addListenerToMarker();
@@ -84,8 +88,19 @@ function initialize() {
   map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
 
-  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.longitude, location.title, location.created_at, location.id, map) });
+  locObjects = $('.recording').data('recordings').map(function(location) { return new Location(location.latitude, location.
+    longitude, location.title, location.created_at, location.id, map) });
+
+  var markerarray = []
+  for (i=0; i< locObjects.length; i++) {
+    markerarray.push(locObjects[i].marker)
+
+  }
+  var markerCluster = new MarkerClusterer(map, markerarray, {gridSize: 150});
+
+
 }
+
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
