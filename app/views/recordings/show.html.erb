@@ -51,7 +51,7 @@
         <p><%= @recording.description %></p>
         <p><%= render partial: "tag", collection: @recording.tag_list %></p>
       </div>
-      <h3>Comments:</h3>
+      <h4><span class="glyphicon glyphicon-comment"></span> <%= @recording.comments.count %></h4>
       <div id="new-comment-form-container">
         <%= render 'comments/new' %>
       </div>
