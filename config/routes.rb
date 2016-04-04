@@ -1,20 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'comments/show'
 
-  get 'comments/new'
-
-  get 'comments/create'
-
-  get 'comments/edit'
-
-  get 'comments/update'
-
-  get 'comments/delete'
 
   resources :tags, only: [:show]
 
   resources :recordings do
+    resources :comments
     member do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"
