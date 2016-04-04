@@ -57,7 +57,6 @@
           <div id="new-comment-form-container">
             <%= render 'comments/new' %>
           </div>
-
           <div class="comment-list">
             <ul class="commentList">
               <%= render @recording.comments.recent %>
@@ -80,6 +79,7 @@
       zoom: 6,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+<<<<<<< HEAD
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
     var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude)});
       marker.setMap(map)
@@ -87,13 +87,3 @@
 <<<<<<< HEAD
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-=======
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude), icon: 'http://www120.lunapic.com/editor/working/145980453672967?4703904781'});
-    marker.setMap(map)
-            }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-      </script>
->>>>>>> pair-theandrewykim
