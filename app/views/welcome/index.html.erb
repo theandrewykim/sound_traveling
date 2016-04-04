@@ -1,30 +1,51 @@
+
 <head>
    <%= javascript_include_tag 'markerclusterer' %>
 </head>
 
-<% content_for :search do %>
-  <div class="search">
-  <%= search_form_for @q do |f| %>
-    <%= f.search_field :title_or_description_or_city_or_country_or_tags_name_cont %>
-  </div>
-    <div class="submit-search">
-      <%= f.submit "Search" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron text-center">
+
+        <h3>Where do you want to go?</h3>
+
+        <div class="col-md-6 col-md-offset-3">
+
+          <% content_for :search do %>
+            <%= search_form_for @q do |f| %>
+            <div class='input-group'>
+              <%= f.search_field :title_or_description_or_city_or_country_or_tags_name_cont, class: "form-control", placeholder: "Where do you want to go?" %>
+              <span class="input-group-btn">
+                 <button class="btn btn-default" type="submit">
+                     <span class="glyphicon glyphicon-globe"></span>
+                 </button>
+              </span>
+            <% end %>
+          <% end %>
+            </div>
+
+          <%= content_tag :div, class: "recording", data: {recordings: @recordings} do %>
+          <div id="googleMap" style="width:100%;height:380px;">
+          <% end %>
+          </div>
+
+        </div>
+
+      </div>
     </div>
-  <% end %>
-<% end %>
-
-<div class="jumbotron">
-  <h1>Where do you want to go?</h1>
-   <%= content_tag :div, class: "recording", data: {recordings: @recordings} do %>
-  <div id="googleMap" style="width:100%;height:380px;">
-    <% end %>
+  </div>
 </div>
 
-<div class="row">
-  <ul class="list-unstyled">
-    <%= render @recordings %>
-  </ul>
+
+<div class="container">
+  <div>
+      <%= render @recordings %>
+  </div>
 </div>
+
+
+
 
 <script>
   function Location(latitude, longitude, title, created_at, id, map) {
