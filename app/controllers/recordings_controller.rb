@@ -27,6 +27,7 @@ class RecordingsController < ApplicationController
 
   def show
     @recording = Recording.find(params[:id])
+    # @comment = @recording.comments.new
   end
 
   def delete
