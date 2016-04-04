@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+
+
   resources :tags, only: [:show]
 
-  resources :recordings
+  resources :recordings do
+    resources :comments
+    member do
+      put "like", to: "recordings#like"
+      put "unlike", to: "recordings#unlike"
+    end
+  end
 
   devise_for :users
   root 'welcome#index'

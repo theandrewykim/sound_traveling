@@ -1,6 +1,18 @@
 <head>
    <%= javascript_include_tag 'markerclusterer' %>
 </head>
+
+<% content_for :search do %>
+  <div class="search">
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :title_or_description_or_city_or_country_or_tags_name_cont %>
+  </div>
+    <div class="submit-search">
+      <%= f.submit "Search" %>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="jumbotron">
   <h1>Where do you want to go?</h1>
    <%= content_tag :div, class: "recording", data: {recordings: @recordings} do %>
@@ -9,10 +21,11 @@
 </div>
 
 <div class="row">
-  <ul>
+  <ul class="list-unstyled">
     <%= render @recordings %>
   </ul>
 </div>
+
 <script>
   function Location(latitude, longitude, title, created_at, id, map) {
   this.latitude = latitude;

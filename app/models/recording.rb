@@ -13,26 +13,30 @@ class Recording < ActiveRecord::Base
   has_many :like_users, through: :likes, source: :user
 
   validates :title, presence: true
+  validates :user, presence: true
 
   has_attached_file :sound
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
   acts_as_taggable
+  acts_as_votable
+  acts_as_commentable
 
-reverse_geocoded_by :latitude, :longitude do |obj,results|
-  if geo = results.first
-    obj.city    = geo.city
-    obj.zipcode = geo.postal_code
-    obj.country = geo.country_code
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      obj.city    = geo.city
+      obj.zipcode = geo.postal_code
+      obj.country = geo.country_code
+    end
   end
-end
-after_validation :reverse_geocode
+
+  after_validation :reverse_geocode
 
   def player_params
     {recordingname: self.title,
      url: self.sound.url,
-    latitude: self.latitude,
-    longitude: self.longitude}
+     latitude: self.latitude,
+     longitude: self.longitude}
   end
 
 

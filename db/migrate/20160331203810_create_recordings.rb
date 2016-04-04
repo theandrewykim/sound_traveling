@@ -10,7 +10,7 @@ class CreateRecordings < ActiveRecord::Migration
       t.float :longitude, null: false
       t.text  :description
 
-      t.references :user
+      t.references :user, null: false, index: true
 
       t.timestamps null: false
     end
