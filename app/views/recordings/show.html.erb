@@ -29,10 +29,9 @@
   </div>
 </div>
 
-
 <div class="container">
   <div class="row content">
-    <div class="col-xs-6 col-md-3">
+       <div id="like-container" class="col-xs-6 col-md-3">
       <% if current_user.voted_for? @recording %>
         <%= link_to unlike_recording_path(@recording), method: :put, class: "btn btn-default" do %>
           <h3><i class="glyphicon glyphicon-heart" style="color:blue"></i><h3>
@@ -45,6 +44,8 @@
        <%= @recording.get_likes.size %></h2>
     </div>
 
+    </div>
+
     <div class="col-xs-12 col-sm-6 col-md-9">
       <div class='info'>
         <h3><%= @recording.title %></h3>
@@ -52,13 +53,9 @@
         <p><%= render partial: "tag", collection: @recording.tag_list %></p>
       </div>
       <h3>Comments:</h3>
-      <div id="new-comment-form-container">
-        <%= link_to 'Add comment', new_recording_comment_path(@recording) %>
-        <%= render 'comments/new' %>
-      </div>
       <div class="comment-list">
         <ul class="list-unstyled">
-          <%= render @recording.comments.recent %>
+          <%= render @recording.comments %>
         </ul>
       </div>
     </div>

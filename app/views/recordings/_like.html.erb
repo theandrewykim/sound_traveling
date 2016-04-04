@@ -1,0 +1,12 @@
+    <div id="like-container" class="col-xs-6 col-md-3">
+      <% if current_user.voted_for? @recording %>
+        <%= link_to unlike_recording_path(@recording), method: :put, class: "btn btn-default" do %>
+          <h3><i class="glyphicon glyphicon-heart" style="color:blue"></i><h3>
+        <% end %>
+      <% else %>
+        <%= link_to like_recording_path(@recording), method: :put, class: "btn btn-default" do %>
+          <h3><i class="glyphicon glyphicon-heart"></i><h3>
+        <% end %>
+      <% end %>
+       <%= @recording.get_likes.size %></h2>
+    </div>
