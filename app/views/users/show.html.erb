@@ -1,2 +1,54 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%=@user.username%></h1>
+<h2>Sounds Recorded</h2>
+<%= content_tag :div, class: "recording", data: {recordings: @user.recordings} do %>
+<div id="googleMap" style="width:40%;height:360px;"></div>
+<%end%>
+
+<%if !!current_user.following.include?(@user) %>
+<%=link_to "#{@user.followers.length}- Unsubscribe", user_relationship_path(@user, Relationship.where(follower_id: @user.id,following_id:current_user.id)), :method => :delete%>
+<%else%>
+<%=link_to "#{@user.followers.length} Subscribe", user_relationships_path(@user), :method => :post%>
+<%end%>
+
+
+<script>
+// function initialize() {
+//   var mapProp = {
+//     zoom:0,
+//     mapTypeId:google.maps.MapTypeId.ROADMAP
+//   };
+//   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+// }
+// google.maps.event.addDomListener(window, 'load', initialize);
+
+      function initialize() {
+  function Location(latitude, longitude, title, created_at, id, map) {
+  this.latitude = latitude;
+  this.longitude = longitude;
+  this.title = title;
+  this.map = map;
+  this.id = id;
+  this.created_at = created_at;
+  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude),
+    icon: 'http://www120.lunapic.com/editor/working/145980453672967?7563273330'});
+  this.infowindow = new google.maps.InfoWindow({content: '<a href="/recordings/'+this.id+'">'+this.title+'</a>'});
+  this.marker.setMap(this.map);
+  this.addListenerToMarker();
+}
+Location.prototype.addListenerToMarker = function() {
+  this.marker.addListener('click', function() {
+    this.infowindow.open(this.map, this.marker);
+  }.bind(this));
+};
+    var locObjects
+    var data = $('.recording').data()
+    var mapProp = {
+      center: new google.maps.LatLng(51.508742,-50.520850),
+      zoom: 2,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    locObjects = data.recordings.map(function(location) { return new Location(location.latitude, location.
+    longitude, location.title, location.created_at, location.id, map) });
+  };
+  google.maps.event.addDomListener(window, 'load', initialize);</script>
