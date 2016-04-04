@@ -1,5 +1,11 @@
-<%= form_for @recording.comments.new, url: recording_comments_path(@recording) do |f| -%>
-  <%= f.label :body %>
-  <%= f.text_area :body %>
-  <%= f.submit "Add Comment" %>
+
+<%= form_for @recording.comments.new, url: recording_comments_path(@recording), class: "form-inline" do |f| -%>
+    <div class="form-group">
+      <%= f.text_area :body, placeholder: "Add comment", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    </div>
 <% end -%>
+
+

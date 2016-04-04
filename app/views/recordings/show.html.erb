@@ -1,90 +1,89 @@
-<head>
-</head>
 <body>
-<div class="row">
-  <%= content_tag :div, class: "recording", data: {recordings: @recording} do %>
-    <div id="googleMap" style="width:100%;height:380px;">
-    </div>
+  <div class="row">
+    <%= content_tag :div, class: "recording", data: {recordings: @recording} do %>
+      <div id="googleMap" style="width:100%;height:380px;"></div>
     <%end%>
 
-  <div class="responsive-wrapper">
-    <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
+    <div class="responsive-wrapper">
+      <div id="jquery_jplayer_audio_1" class="jp-jplayer"></div>
 
-    <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
-      <div class="jp-play-control jp-control">
-        <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
-      </div>
-      <div class="jp-bar">
-        <div class="jp-seek-bar jp-seek-bar-display"></div>
-        <div class="jp-seek-bar">
-          <div class="jp-play-bar"></div>
-          <div class="jp-details"><span class="jp-title" aria-label="title"></span></div>
-          <div class="jp-timing"><span class="jp-duration" role="timer" aria-label="duration"></span></div>
+      <div id="jp_container_audio_1" class="jp-flat-audio" role="application" aria-label="media player">
+        <div class="jp-play-control jp-control">
+          <button class="jp-play jp-button" role="button" aria-label="play" tabindex="0"></button>
+        </div>
+        <div class="jp-bar">
+          <div class="jp-seek-bar jp-seek-bar-display"></div>
+          <div class="jp-seek-bar">
+            <div class="jp-play-bar"></div>
+            <div class="jp-details"><span class="jp-title" aria-label="title"></span></div>
+            <div class="jp-timing"><span class="jp-duration" role="timer" aria-label="duration"></span></div>
+          </div>
+        </div>
+        <div class="jp-no-solution">
+          Media Player Error<br />
+          Update your browser or Flash plugin
         </div>
       </div>
-      <div class="jp-no-solution">
-        Media Player Error<br />
-        Update your browser or Flash plugin
-      </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row content">
-    <div class="col-xs-6 col-md-3">
-      <% if current_user.voted_for? @recording %>
-        <%= link_to unlike_recording_path(@recording), method: :put, class: "btn btn-default" do %>
-          <h3><i class="glyphicon glyphicon-heart" style="color:blue"></i><h3>
-        <% end %>
-      <% else %>
-        <%= link_to like_recording_path(@recording), method: :put, class: "btn btn-default" do %>
-          <h3><i class="glyphicon glyphicon-heart"></i><h3>
-        <% end %>
-      <% end %>
-       <%= @recording.get_likes.size %></h2>
-    </div>
-
-    <div class="col-xs-12 col-sm-6 col-md-9">
-      <div class='info'>
-        <h3><%= @recording.title %></h3>
-        <p><%= @recording.description %></p>
-        <p><%= render partial: "tag", collection: @recording.tag_list %></p>
-      </div>
-      <h3>Comments:</h3>
-      <div id="new-comment-form-container">
-        <%= link_to 'Add comment', new_recording_comment_path(@recording) %>
-        <%= render 'comments/new' %>
-      </div>
-      <div class="comment-list">
-        <ul class="list-unstyled">
-          <%= render @recording.comments.recent %>
-        </ul>
-      </div>
     </div>
 
   </div>
-</div>
+
+
+  <div class="container">
+    <div class="row content">
+        <div class="col-xs-6 col-md-3">
+          <h3>
+            <% if current_user.voted_for? @recording %>
+              <%= link_to unlike_recording_path(@recording), method: :put do %>
+                <i class="glyphicon glyphicon-heart" style="color:blue"></i>
+              <% end %>
+            <% else %>
+              <%= link_to like_recording_path(@recording), method: :put do %>
+               <i class="glyphicon glyphicon-heart"></i>
+              <% end %>
+            <% end %>
+            <%= @recording.get_likes.size %>
+          </h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-9">
+
+          <div class='info'>
+            <h3><%= @recording.title %></h3>
+            <p><%= @recording.description %></p>
+            <p><%= render partial: "tag", collection: @recording.tag_list %></p>
+          </div>
+
+          <h4><span class="glyphicon glyphicon-comment"></span> <%= @recording.comments.count %></h4>
+          <div id="new-comment-form-container">
+            <%= render 'comments/new' %>
+          </div>
+
+          <div class="comment-list">
+            <ul class="commentList">
+              <%= render @recording.comments.recent %>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </div>
 
 <%= content_tag :div, class: "recording_params", data: @recording.player_params do %>
 <% end %>
 </body>
 
 
-
- <script>
-        function initialize() {
-  var data = $('.recording_params').data()
-  var mapProp = {
-    center:new google.maps.LatLng(data.latitude, data.longitude),
-    zoom:3,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
+<script>
+  function initialize() {
+    var data = $('.recording_params').data()
+    var mapProp = {
+      center: new google.maps.LatLng(data.latitude, data.longitude),
+      zoom: 6,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+    var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude)});
+      marker.setMap(map)
   };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude)});
-    marker.setMap(map)
-            }
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-
-      </script>
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
