@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+
+
   resources :tags, only: [:show]
 
   resources :recordings do
+    resources :comments
     member do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"

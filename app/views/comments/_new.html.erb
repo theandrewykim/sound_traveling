@@ -1,4 +1,4 @@
-<%= form_for @comment, url: recording_comments_path do |f| -%>
+<%= form_for @recording.comments.new, url: recording_comments_path(@recording) do |f| -%>
   <%= f.label :body %>
   <%= f.text_area :body %>
   <%= f.submit "Add Comment" %>

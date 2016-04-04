@@ -36,6 +36,7 @@ gem 'figaro'
 gem 'kronic'
 gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
+gem 'acts_as_commentable'
 
 
 
