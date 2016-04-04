@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
 
   resources :tags, only: [:show]
+  resources :users, only: [:show] do
+  resources :relationships, only: [:create, :destroy]
+end
 
   resources :recordings do
     resources :comments
