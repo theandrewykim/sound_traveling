@@ -1,7 +1,7 @@
 create_admins = true
 
 users_amount      = 5
-recordings_amount = 150
+recordings_amount = 50
 
 additional_tag_amount  = 15
 
