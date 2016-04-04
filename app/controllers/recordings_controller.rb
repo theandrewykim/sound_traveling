@@ -22,12 +22,12 @@ class RecordingsController < ApplicationController
       redirect_to root_path
     else
       "ERROR"
+      # make validations
     end
   end
 
   def show
     @recording = Recording.find(params[:id])
-    # @comment = @recording.comments.new
   end
 
   def delete
