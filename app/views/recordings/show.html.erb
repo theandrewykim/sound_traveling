@@ -53,11 +53,10 @@
       </div>
       <h3>Comments:</h3>
       <div id="new-comment-form-container">
-        <%= link_to 'Add comment', new_recording_comment_path(@recording) %>
         <%= render 'comments/new' %>
       </div>
       <div class="comment-list">
-        <ul class="list-unstyled">
+        <ul class="commentList">
           <%= render @recording.comments.recent %>
         </ul>
       </div>
