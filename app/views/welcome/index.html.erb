@@ -15,7 +15,7 @@
           <% content_for :search do %>
             <%= search_form_for @q do |f| %>
             <div class='input-group'>
-              <%= f.search_field :title_or_description_or_city_or_country_or_tags_name_cont, class: "form-control", placeholder: "Where do you want to go?" %>
+              <%= autocomplete_field_tag 'recording_title', '', autocomplete_recording_title_recordings_path, class: "form-control", placeholder: "Where do you want to go?" %>
               <span class="input-group-btn">
                  <button class="btn btn-default" type="submit">
                      <span class="glyphicon glyphicon-globe"></span>

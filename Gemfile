@@ -41,6 +41,8 @@ gem 'acts_as_commentable'
 gem 'ransack'
 
 gem 'bootstrap_form'
+gem 'rails-jquery-autocomplete'
+gem 'jquery-ui-rails'
 
 gem 'rails-jquery-autocomplete'
 gem 'jquery-ui-rails'
