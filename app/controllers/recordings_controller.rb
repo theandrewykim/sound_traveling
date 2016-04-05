@@ -1,4 +1,7 @@
 class RecordingsController < ApplicationController
+
+  autocomplete :tag, :name, class_name: 'ActsAsTaggableOn::Tag'
+
   def index
     @q = Recording.ransack(params[:q])
     @recordings = @q.result(distinct: true)

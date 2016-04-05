@@ -42,6 +42,9 @@ gem 'ransack'
 
 gem 'bootstrap_form'
 
+gem 'rails-jquery-autocomplete'
+gem 'jquery-ui-rails'
+
 
 
 
