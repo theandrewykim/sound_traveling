@@ -19,7 +19,7 @@ class RecordingsController < ApplicationController
   def create
     @recording = Recording.new(recording_params)
     if  @recording.save
-      redirect_to root_path
+      redirect_to recording_path(@recording)
     else
       "ERROR"
       # make validations
@@ -47,7 +47,7 @@ class RecordingsController < ApplicationController
 
 private
   def recording_params
-    params.require(:recording).permit(:title, :sound, :description, :latitude, :longitude, :tag_list).merge(user: current_user)
+    params.require(:recording).permit(:title, :sound, :channels, :description, :latitude, :longitude, :tag_list).merge(user: current_user)
   end
 
 end

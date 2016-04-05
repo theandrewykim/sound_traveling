@@ -49,7 +49,8 @@ recordings_amount.times do
                                 longitude: Faker::Address.longitude,
                                 description: Faker::Hipster.paragraph(10),
                                 tag_list: tag_list,
-                                user: users.sample
+                                user: users.sample,
+                                channels: rand(4)
                                 )
 
 

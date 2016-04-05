@@ -50,17 +50,18 @@ ActiveRecord::Schema.define(version: 20160404221225) do
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "recordings", force: :cascade do |t|
-    t.string   "title",              null: false
+    t.string   "title",                          null: false
     t.string   "address"
     t.string   "city"
     t.string   "zipcode"
     t.string   "country"
-    t.float    "latitude",           null: false
-    t.float    "longitude",          null: false
+    t.float    "latitude",                       null: false
+    t.float    "longitude",                      null: false
     t.text     "description"
-    t.integer  "user_id",            null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.integer  "channels",           default: 0, null: false
+    t.integer  "user_id",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "sound_file_name"
     t.string   "sound_content_type"
     t.integer  "sound_file_size"
