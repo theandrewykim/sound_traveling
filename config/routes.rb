@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"
     end
+    get :autocomplete_tag_name, on: :collection
   end
 
   resources :playlists
