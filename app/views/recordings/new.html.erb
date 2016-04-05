@@ -14,7 +14,11 @@
           </div>
 
           <div>
-            <%= f.text_field :description, size: 50%>
+            <%= f.select :channels, Recording.channels.keys %>
+          </div>
+
+          <div>
+            <%= f.text_area :description %>
           </div>
           <div>
             <%= f.text_field :tag_list %>
