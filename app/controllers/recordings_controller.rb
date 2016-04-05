@@ -1,5 +1,7 @@
 class RecordingsController < ApplicationController
 
+  skip_before_action :authenticate_user!,  only: [:index, :show]
+
   autocomplete :tag, :name, class_name: 'ActsAsTaggableOn::Tag'
 
   def index

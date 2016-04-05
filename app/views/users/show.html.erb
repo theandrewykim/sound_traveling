@@ -4,7 +4,7 @@
 <div id="googleMap" style="width:40%;height:360px;"></div>
 <%end%>
 
-<%if !!current_user.following.include?(@user) %>
+<%if user_signed_in? && !!current_user.following.include?(@user) %>
 <%=link_to "#{@user.followers.length}- Unsubscribe", user_relationship_path(@user, Relationship.where(follower_id: @user.id,following_id:current_user.id)), :method => :delete%>
 <%else%>
 <%=link_to "#{@user.followers.length} Subscribe", user_relationships_path(@user), :method => :post%>
