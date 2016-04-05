@@ -1,5 +1,5 @@
                 <div id="dropdown"%>
-                <%= form_for recording_playlist_playlistrecordings_path(@recording, current_user.playlists.first), :html => { :id => "form" } do |f| %>
+                <%=bootstrap_form_for recording_playlist_playlistrecordings_path(@recording, current_user.playlists.first), :html => { :id => "form" } do |f| %>
                 <%= f.label :add_to_playlist %>:
                 <%= f.collection_select :playlist_id, current_user.playlists, :id, :name,  :label => false  %>
                 <%= f.hidden_field :recording_id, :value => @recording.id%>
