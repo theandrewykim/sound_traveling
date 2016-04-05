@@ -1,45 +1,46 @@
 
-<head>
-</head>
-<body>
-  <br>
-  <br>
-  <br>
-  <br>
 
 
+<div class="container"> <br />
+    <div class="row">
+      <div class="col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Upload files</strong> <small> </small></div>
+        <div class="panel-body">
+          <%= bootstrap_form_for(@recording) do |f| %>
 
-  <div class="form"%>
-  <%= form_for(@recording) do |f| %>
+          <div>
+            <%= f.text_field :title%>
+          </div>
 
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title%>
+          <div>
+            <%= f.text_field :description, size: 50%>
+          </div>
+          <div>
+            <%= f.text_field :tag_list %>
+          </div>
+
+          <div>
+            <%= f.file_field :sound %>
+          </div>
+
+          <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+          <div id="route2" style="width:100%;height:380px;">
+          </div>
+          <div>
+            <%=f.submit%>
+          </div>
+          <%end%>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description, size: 50%>
-  </div>
-  <div>
-    <%= f.label :tag_list, "Tags (separated by commas)" %>
-    <%= f.text_field :tag_list %>
-  </div>
-
-  <div>
-    <%= f.label :sound %>
-    <%= f.file_field :sound %>
-  </div>
-
-  <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-  <div id="route2" style="width:50%;height:380px;">
-
 </div>
 
-  <%=f.submit%>
-  <%end%>
-</div>
-</body>
+
+
+
   <script>
   var recordings = [];
   var markerarray = []
