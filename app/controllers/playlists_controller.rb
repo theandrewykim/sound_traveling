@@ -12,6 +12,14 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def destroy
+    @playlist = Playlist.find(params[:id])
+    if @playlist.destroy
+      redirect_to :back
+    else
+    end
+  end
+
 
 
 private
