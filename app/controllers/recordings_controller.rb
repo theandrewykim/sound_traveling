@@ -1,5 +1,7 @@
 class RecordingsController < ApplicationController
 
+  skip_before_action :authenticate_user!,  only: [:index, :show]
+
   autocomplete :tag, :name, class_name: 'ActsAsTaggableOn::Tag'
 
   def index
@@ -50,6 +52,7 @@ class RecordingsController < ApplicationController
 
 private
   def recording_params
+    params[:recording][:tag_list] = params[:recording][:tag_list].join(',')
     params.require(:recording).permit(:title, :sound, :channels, :description, :latitude, :longitude, :tag_list).merge(user: current_user)
   end
 
