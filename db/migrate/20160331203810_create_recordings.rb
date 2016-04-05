@@ -9,7 +9,7 @@ class CreateRecordings < ActiveRecord::Migration
       t.float :latitude, null: false
       t.float :longitude, null: false
       t.text  :description
-      t.integer :type, default: 0, null: false
+      t.integer :channels, default: 0, null: false
 
       t.references :user, null: false, index: true
 
