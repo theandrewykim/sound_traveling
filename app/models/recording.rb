@@ -24,6 +24,8 @@ class Recording < ActiveRecord::Base
 
   enum channels: {unspecified: 0, mono: 1, stereo: 2, binaural: 3}
 
+  # autocomplete :tag, :name, class_name: 'ActsAsTaggableOn::Tag'
+
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       obj.city    = geo.city
