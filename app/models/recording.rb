@@ -22,6 +22,8 @@ class Recording < ActiveRecord::Base
   acts_as_votable
   acts_as_commentable
 
+  enum type: {unspecified: 0, mono: 1, stereo: 2,  binaural: 3}
+
   reverse_geocoded_by :latitude, :longitude do |obj, results|
     if geo = results.first
       obj.city    = geo.city
