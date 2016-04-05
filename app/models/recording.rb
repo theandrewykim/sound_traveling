@@ -8,6 +8,8 @@ class Recording < ActiveRecord::Base
   has_many :comments
   has_many :recording_tags
   has_many :tags, through: :recording_tags
+  has_many :playlistrecordings
+  has_many :playlists, through: :playlistrecordings
 
   has_many :flag_users, through: :flags, source: :user
   has_many :like_users, through: :likes, source: :user

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :playlists
+  resources :playlists do
+    resources :playlistrecordings
+  end
   resources :tags, only: [:show]
 
   resources :users, only: [:show] do

@@ -1,0 +1,28 @@
+<br>
+<br>
+<h3><%=link_to "Finish", root_path%></h3>
+
+<%@recordings.each do |recording|%>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to recording.title, recording_path(recording) %>
+      <span class="pull-right">
+        <%if @playlist.recordings.include?(recording)%>
+          <%=form_for [@playlist,  Playlistrecording.find_by_playlist_id_and_recording_id(@playlist.id, recording.id)], {:method => :delete} do |f|%>
+          <%= f.hidden_field :recording, :value => recording.id%>
+          <%= f.submit "Remove"%>
+          <%end%>
+        <%else%>
+          <%=form_for [@playlist,  @playlistrecording] do |f|%>
+          <%= f.hidden_field :recording, :value => recording.id%>
+          <%= f.submit "Add track to #{@playlist.name}"%>
+          <%end%>
+        <%end%>
+      </span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%= render partial: "recordings/tag", collection: recording.tag_list %>
+  </div>
+</div>
+<%end%>
