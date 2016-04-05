@@ -38,9 +38,11 @@ gem 'acts-as-taggable-on'
 gem 'acts_as_votable'
 gem 'acts_as_commentable'
 
-
-
 gem 'ransack'
+
+gem 'bootstrap_form'
+
+
 
 
 # Use ActiveModel has_secure_password

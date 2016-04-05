@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-
-  resources :playlists
-  resources :tags, only: [:show]
-  resources :users, only: [:show] do
-  resources :relationships, only: [:create, :destroy]
-end
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :recordings do
     resources :comments
@@ -15,7 +10,12 @@ end
     end
   end
 
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  resources :playlists
+  resources :tags, only: [:show]
+
+  resources :users, only: [:show] do
+    resources :relationships, only: [:create, :destroy]
+  end
   root 'welcome#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

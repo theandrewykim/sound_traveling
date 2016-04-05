@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404191910) do
+ActiveRecord::Schema.define(version: 20160404221225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,25 @@ ActiveRecord::Schema.define(version: 20160404191910) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "playlistrecordings", force: :cascade do |t|
+    t.integer  "recording_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "playlistrecordings", ["playlist_id"], name: "index_playlistrecordings_on_playlist_id", using: :btree
+  add_index "playlistrecordings", ["recording_id"], name: "index_playlistrecordings_on_recording_id", using: :btree
+
+  create_table "playlists", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "recordings", force: :cascade do |t|
     t.string   "title",              null: false
@@ -117,4 +136,7 @@ ActiveRecord::Schema.define(version: 20160404191910) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "playlistrecordings", "playlists"
+  add_foreign_key "playlistrecordings", "recordings"
+  add_foreign_key "playlists", "users"
 end
