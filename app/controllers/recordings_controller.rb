@@ -50,6 +50,8 @@ class RecordingsController < ApplicationController
 
 private
   def recording_params
+    params[:recording][:tag_list] = params[:recording][:tag_list].join(',')
+
     params.require(:recording).permit(:title, :sound, :channels, :description, :latitude, :longitude, :tag_list).merge(user: current_user)
   end
 

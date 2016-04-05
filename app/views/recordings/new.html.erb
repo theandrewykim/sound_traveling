@@ -21,7 +21,7 @@
             <%= f.text_area :description %>
           </div>
           <div>
-            <%= f.autocomplete_field :tag_list, autocomplete_tag_name_recordings_path, class: 'form-control', label: 'Tags' %>
+            <%= f.autocomplete_field :tag_list, autocomplete_tag_name_recordings_path, class: 'form-control', 'data-delimiter': ', ', multiple: true, 'data-auto-focus' => true %>
           </div>
 
           <div>
