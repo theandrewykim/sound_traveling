@@ -1,0 +1,28 @@
+<div class="container"> <br />
+    <div class="row">
+      <div class="col-md-7">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Make a Playlist</strong> <small> </small></div>
+        <div class="panel-body">
+          <%= bootstrap_form_for(@playlist) do |f| %>
+
+          <div>
+            <%= f.text_field :name%>
+          </div>
+
+          <div>
+            <%= f.text_area :description %>
+          </div>
+          <div>
+            <%=f.submit "Next"%>
+          </div>
+          <%end%>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

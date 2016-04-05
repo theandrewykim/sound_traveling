@@ -10,7 +10,15 @@
 <%=link_to "#{@user.followers.length} Subscribe", user_relationships_path(@user), :method => :post%>
 <%end%>
 
-
+<h3>Playlists</h3>
+<%@user.playlists.each do |playlist|%>
+<li><%=link_to playlist.name, playlist%></li>
+<%if @user == current_user%>
+  <%=button_to "Delete", playlist, :method => :delete%>
+  <%=link_to "Edit", new_playlist_playlistrecording_path(playlist)%>
+<%else%>
+<%end%>
+<%end%>
 <script>
 // function initialize() {
 //   var mapProp = {

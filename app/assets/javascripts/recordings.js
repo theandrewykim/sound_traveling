@@ -59,7 +59,20 @@ jQuery(document).ready(function($) {
 // })
 //  })
 
+$("#dropdown").on("submit",function(e){
+var $playlistID = $('#form :selected').val()
+var $recordingID = $("#form").attr("action")
+e.preventDefault()
+$.ajax({
+  type: 'POST',
+  url: $recordingID+'/playlists/'+$playlistID+'/playlistrecordings',
+  data: $(this).serialize()
+}).done(function(response){
 
+$("#dropdown").prepend("Added to playlist!")
+
+})
+})
 
 
 });

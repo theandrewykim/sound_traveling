@@ -9,9 +9,15 @@ Rails.application.routes.draw do
       put "unlike", to: "recordings#unlike"
     end
     get :autocomplete_tag_name, on: :collection
+    resources :playlists, only: [:index] do
+    resources :playlistrecordings, only: [:create]
+    end
+
   end
 
-  resources :playlists
+  resources :playlists do
+    resources :playlistrecordings
+  end
   resources :tags, only: [:show]
 
   resources :users, only: [:show] do
