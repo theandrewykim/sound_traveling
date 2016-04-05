@@ -8,6 +8,9 @@ Rails.application.routes.draw do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"
     end
+    resources :playlists, only: [:index] do
+    resources :playlistrecordings, only: [:create]
+    end
   end
 
   resources :playlists do

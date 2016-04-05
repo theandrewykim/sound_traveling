@@ -7,12 +7,22 @@ class PlaylistrecordingsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.find(params[:playlist_id])
-    @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id: params[:playlistrecording][:recording])
-    if @playlistrecording.save
-      redirect_to new_playlist_playlistrecording_path(@playlist)
+    if !!params[:recording_id]
+      @playlist = Playlist.find(params[:playlist_id])
+      @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id:params[:recording_id] )
+      if @playlistrecording.save
+        redirect_to :back
+      else
+        # error handing
+      end
     else
-      #Add error validations
+      @playlist = Playlist.find(params[:playlist_id])
+      @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id: params[:playlistrecording][:recording])
+      if @playlistrecording.save
+        redirect_to new_playlist_playlistrecording_path(@playlist)
+      else
+        #Add error validations
+      end
     end
   end
 

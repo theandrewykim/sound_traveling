@@ -55,6 +55,10 @@
             <%else%>
             <h5><%=link_to "#{@recording.user.followers.length} - Subscribe!", user_relationships_path(@recording.user), :method=> :post%></h5>
             <%end%>
+            <%if !!current_user.playlists%>
+            <%=render 'dropdown'%>
+            <%else%>
+            <%end%>
             <p><%= @recording.description %></p>
             <p><%= render partial: "tag", collection: @recording.tag_list %></p>
           </div>

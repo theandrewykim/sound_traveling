@@ -20,6 +20,11 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def show
+    @playlist = Playlist.find(params[:id])
+    @recordings = @playlist.recordings
+  end
+
 
 
 private
