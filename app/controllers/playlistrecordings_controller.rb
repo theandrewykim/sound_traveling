@@ -20,7 +20,7 @@ class PlaylistrecordingsController < ApplicationController
       @recording = Recording.find(params[:playlistrecording][:recording])
       @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id: @recording.id)
       if @playlistrecording.save
-        render '_trackbutton.html.erb'
+        render '_trackbutton.html.erb', layout: false
       else
         #Add error validations
       end
@@ -32,7 +32,7 @@ class PlaylistrecordingsController < ApplicationController
     @playlist = Playlist.find(params[:playlist_id])
     @recording = Recording.find(params[:playlistrecording][:recording])
     if @playlistrecording.destroy
-      render '_trackbutton.html.erb'
+      render '_trackbutton.html.erb', layout: false
     else
     end
   end

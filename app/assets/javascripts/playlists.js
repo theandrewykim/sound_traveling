@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-  $("#song-panel").on("submit","#new_playlistrecording", function(e){
+  $("body").on("submit",".new_playlistrecording", function(e){
     var url = $(this).attr("action");
     var $remove = $(this).parent()
     var $prepend = $remove.parent()
@@ -17,7 +17,7 @@ $( document ).ready(function() {
 
   });
 
-    $("#song-panel").on("submit",".edit_playlistrecording", function(e){
+    $("body").on("submit",".edit_playlistrecording", function(e){
     var url = $(this).attr("action");
     var $remove = $(this).parent()
     var $prepend = $remove.parent()
