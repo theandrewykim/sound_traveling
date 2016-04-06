@@ -40,6 +40,7 @@ class RecordingsController < ApplicationController
 
   def show
     @recording = Recording.find(params[:id])
+    @playlistrecording = Playlistrecording.new
   end
 
   def delete
