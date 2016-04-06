@@ -1,7 +1,7 @@
 create_admins = true
 
-users_amount      = 5
-recordings_amount = 50
+users_amount      = 3
+recordings_amount = 30
 
 additional_tag_amount  = 15
 
@@ -21,7 +21,7 @@ additional_tag_amount.times do
 end
 
 
-if create_admins == true
+if create_admins
   User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
   User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
   User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
@@ -50,7 +50,8 @@ recordings_amount.times do
                                 description: Faker::Hipster.paragraph(10),
                                 tag_list: tag_list,
                                 user: users.sample,
-                                channels: rand(4)
+                                channels: rand(4),
+                                sound: File.new("./app/assets/audio/crowd-yay.mp3")
                                 )
 
 
