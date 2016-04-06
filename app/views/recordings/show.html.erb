@@ -30,9 +30,16 @@
 
   <div class="container">
     <div class="row content">
-        <div class="col-xs-6 col-md-3">
-          <h3>
-            <% if user_signed_in? && current_user.voted_for?(@recording) %>
+      <div class="col-xs-12 col-lg-3">
+          <%= render partial: 'users/user', locals: {user: @recording.user} %>
+      </div>
+
+
+        <div class="col-xs-12 col-lg-9">
+
+          <div class='info'>
+            <h3><%= @recording.title %>
+              <% if user_signed_in? && current_user.voted_for?(@recording) %>
               <%= link_to unlike_recording_path(@recording), method: :put do %>
                 <i class="glyphicon glyphicon-heart" style="color:blue"></i>
               <% end %>
@@ -42,13 +49,15 @@
               <% end %>
             <% end %>
             <%= @recording.get_likes.size %>
-          </h3>
-        </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-9">
 
-          <div class='info'>
-            <h3><%= @recording.title %></h3>
+
+
+
+
+
+
+            </h3>
             <h5>Submitted by: <%=link_to @recording.user.username, user_path(@recording.user)%></h5>
             <%if user_signed_in? && !!current_user.following.include?(@recording.user) %>
             <h5><%=link_to "#{@recording.user.followers.length}- Unsubscribe", user_relationship_path(@recording.user, Relationship.where(follower_id: @recording.user.id,following_id:current_user.id)), :method => :delete%></h5>
