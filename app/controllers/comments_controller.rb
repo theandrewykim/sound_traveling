@@ -11,8 +11,13 @@ class CommentsController < ApplicationController
     @recording = Recording.find(params[:recording_id])
     @comment = @recording.comments.new(comment_params)
     if @comment.save
-      flash[:success] = 'Comment posted.'
-      redirect_to recording_path(@recording)
+      if request.xhr?
+        flash[:success] = 'Comment posted.'
+        render @comment, locals: {comment: @comment}, layout:false
+
+      else
+        ""
+      end
     else
       flash[:alert] = "Didn't Save"
       redirect_to recording_path(@recording)

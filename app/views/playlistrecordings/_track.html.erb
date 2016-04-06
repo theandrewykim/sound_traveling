@@ -3,7 +3,7 @@
 <h3><%=link_to "Finish", root_path%></h3>
 
 <%@recordings.each do |recording|%>
-<div class="panel panel-default">
+<div id="song-panel" class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to recording.title, recording_path(recording) %>
       <span class="pull-right">

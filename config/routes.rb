@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :recordings do
      get :autocomplete_recording_title, on: :collection
-    resources :comments
+    resources :comments, except: [:index]
     member do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"
