@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'active_model_serializers'
 
 gem 'paperclip'
 gem 'aws-sdk', '<2.0'
@@ -41,9 +42,6 @@ gem 'acts_as_commentable'
 gem 'ransack'
 
 gem 'bootstrap_form'
-gem 'rails-jquery-autocomplete'
-gem 'jquery-ui-rails'
-
 gem 'rails-jquery-autocomplete'
 gem 'jquery-ui-rails'
 
@@ -63,6 +61,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'
+  gem 'quiet_assets'
 
 end
 

@@ -15,10 +15,14 @@
           <% content_for :search do %>
             <%= search_form_for @q do |f| %>
             <div class='input-group'>
-              <%= autocomplete_field_tag 'recording_title', '', autocomplete_recording_title_recordings_path, class: "form-control", placeholder: "Where do you want to go?" %>
+              <%= autocomplete_field_tag 'recording_title',
+                  params[:recording_title],
+                  autocomplete_recording_title_recordings_path,
+                  class: "form-control",
+                  placeholder: "Where do you want to go?" %>
               <span class="input-group-btn">
                  <button class="btn btn-default" type="submit">
-                     <span class="glyphicon glyphicon-globe"></span>
+                    <span class="glyphicon glyphicon-globe"></span>
                  </button>
               </span>
             <% end %>

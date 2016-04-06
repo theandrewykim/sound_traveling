@@ -6,9 +6,17 @@ class RecordingsController < ApplicationController
   autocomplete :recording, :title, full: true
 
   def index
-    @q = Recording.ransack(params[:q])
-    @recordings = @q.result(distinct: true)
+    @q = Recording.ransack(title_or_description_or_city_or_country_or_tags_name_cont: params[:recording_title])
+    @recordings = @q.result(distinct: true).includes({ taggings: :tag }, :user)
     render 'welcome/index'
+  end
+
+  def autocomplete_recording_title
+    @recordings = (Recording.by_title(params[:term]) +
+                   Recording.by_city(params[:term]) +
+                   Recording.by_tag(params[:term])).uniq
+
+    render json: @recordings, root: false, each_serializer: AutocompleteSerializer
   end
 
   def edit

@@ -1,5 +1,15 @@
 class Recording < ActiveRecord::Base
+  scope :by_title, ->(regex){
+    where("title ~* ?", "#{Regexp.escape(regex)}")
+  }
 
+  scope :by_city, ->(regex){
+    where("city ~* ?", "#{Regexp.escape(regex)}")
+  }
+
+  scope :by_tag, ->(regex){
+    joins(:taggings, :tags).where("tags.name ~* ?", "#{Regexp.escape(regex)}").uniq
+  }
 
   belongs_to :user
 
