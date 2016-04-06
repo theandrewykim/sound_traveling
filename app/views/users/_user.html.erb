@@ -11,6 +11,11 @@
       <span class="glyphicon glyphicon-globe"></span> <%= user.recordings.count %>
   </div>
   <div>
-    <button type="button" class="btn btn-primary">Follow</button>
+                <%if user_signed_in? && !!current_user.following.include?(@recording.user) %>
+            <h5><%=button_to "Unfollow", user_relationship_path(@recording.user, Relationship.where(follower_id: @recording.user.id,following_id:current_user.id)), :method => :delete, class: "btn btn-primary"%></h5>
+            <%else%>
+            <h5><%=button_to "Follow", user_relationships_path(@recording.user), :method=> :post, class: "btn btn-primary"%></h5>
+            <%end%>
+
   </div>
 </div>

@@ -30,7 +30,6 @@
 
   <div class="container">
     <div class="row content">
-<<<<<<< HEAD
       <div class="col-xs-12 col-lg-3">
           <%= render partial: 'users/user', locals: {user: @recording.user} %>
       </div>
@@ -39,12 +38,15 @@
         <div class="col-xs-12 col-lg-9">
 
           <div class='info'>
-            <h3><%= @recording.title %>
+            <h3><%= @recording.title %></h3>
+            <p><%= @recording.description %></p>
+            <p><%= render partial: "tag", collection: @recording.tag_list %></p>
+
+
         <div id="like-container" class="col-xs-6 col-md-3">
           <h3>
             <% if user_signed_in? && current_user.voted_for?(@recording) %>
               <%= link_to unlike_recording_path(@recording), method: :put, remote: true do %>
-
                 <i class="glyphicon glyphicon-heart" style="color:blue"></i>
               <% end %>
             <% else %>
@@ -52,8 +54,9 @@
                <i class="glyphicon glyphicon-heart"></i>
               <% end %>
             <% end %>
-
             <%= @recording.get_likes.size %>
+          </h3>
+        </div>
 
 
 
@@ -62,19 +65,15 @@
 
 
 
-            </h3>
-            <h5>Submitted by: <%=link_to @recording.user.username, user_path(@recording.user)%></h5>
-            <%if user_signed_in? && !!current_user.following.include?(@recording.user) %>
-            <h5><%=link_to "#{@recording.user.followers.length}- Unsubscribe", user_relationship_path(@recording.user, Relationship.where(follower_id: @recording.user.id,following_id:current_user.id)), :method => :delete%></h5>
-            <%else%>
-            <h5><%=link_to "#{@recording.user.followers.length} - Subscribe!", user_relationships_path(@recording.user), :method=> :post%></h5>
-            <%end%>
+
+<div>
+
             <%if user_signed_in? && !!current_user.playlists%>
             <%=render 'dropdown'%>
             <%else%>
             <%end%>
-            <p><%= @recording.description %></p>
-            <p><%= render partial: "tag", collection: @recording.tag_list %></p>
+
+
           </div>
 
           <h4><span class="glyphicon glyphicon-comment"></span> <%= @recording.comments.count %></h4>
