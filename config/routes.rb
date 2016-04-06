@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
 
   resources :users, only: [:show] do
+    get 'dashboard', to: 'users#dashboard'
     resources :relationships, only: [:create, :destroy]
   end
   root 'welcome#index'

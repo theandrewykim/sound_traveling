@@ -1,6 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= link_to recording.title, recording_path(recording) %>
+      <span class="date sub-text"><%= recording.human_date %> by <%= link_to recording.user.username, user_path(recording.user) %>
       <span class="pull-right">
         <span class="glyphicon glyphicon-comment"></span> <%= recording.comments.count %> |
         <span class="glyphicon glyphicon-heart"></span> <%= recording.get_likes.size %>
