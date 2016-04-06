@@ -55,7 +55,7 @@
             <%else%>
             <h5><%=link_to "#{@recording.user.followers.length} - Subscribe!", user_relationships_path(@recording.user), :method=> :post%></h5>
             <%end%>
-            <%if !!current_user.playlists%>
+            <%if user_signed_in? && !!current_user.playlists%>
             <%=render 'dropdown'%>
             <%else%>
             <%end%>
