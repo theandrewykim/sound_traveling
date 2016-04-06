@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  include ApplicationHelper
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -19,6 +21,7 @@ class User < ActiveRecord::Base
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
 
   acts_as_voter
 
@@ -44,5 +47,9 @@ class User < ActiveRecord::Base
 
   def password_required?
     super && provider.blank?
+  end
+
+  def get_feed
+    Recording.where(user_id: self.following.pluck(:id))
   end
 end

@@ -9,7 +9,4 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
 
-  def human_date
-    Kronic.format(self.created_at)
-  end
 end
