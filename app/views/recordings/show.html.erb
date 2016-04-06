@@ -86,7 +86,7 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude), icon: 'http://www120.lunapic.com/editor/working/145980453672967?7563273330'});
+    var marker = new google.maps.Marker({position: new google.maps.LatLng(data.latitude, data.longitude), icon: '../../app/assets/images/headphones.svg'});
       marker.setMap(map)
   };
   google.maps.event.addDomListener(window, 'load', initialize);
