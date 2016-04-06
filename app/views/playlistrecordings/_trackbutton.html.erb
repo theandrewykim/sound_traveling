@@ -1,0 +1,13 @@
+      <span class="pull-right">
+        <%if @playlist.recordings.include?(@recording)%>
+          <%=form_for [@playlist,  Playlistrecording.find_by_playlist_id_and_recording_id(@playlist.id, @recording.id)], {:method => :delete} do |f|%>
+          <%= f.hidden_field :recording, :value => @recording.id%>
+          <%= f.submit "Remove"%>
+          <%end%>
+        <%else%>
+          <%=form_for [@playlist,  @playlistrecording] do |f|%>
+          <%= f.hidden_field :recording, :value => @recording.id%>
+          <%= f.submit "Add track to #{@playlist.name}"%>
+          <%end%>
+        <%end%>
+      </span>
