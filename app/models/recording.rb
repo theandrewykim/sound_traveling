@@ -1,4 +1,7 @@
 class Recording < ActiveRecord::Base
+
+  include ApplicationHelper
+
   scope :by_title, ->(regex){
     where("title ~* ?", "#{Regexp.escape(regex)}")
   }

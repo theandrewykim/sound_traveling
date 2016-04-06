@@ -16,4 +16,9 @@ module ApplicationHelper
       "alert-info"
     end
   end
+
+  def human_date
+    Kronic.format(self.created_at)
+  end
+
 end
