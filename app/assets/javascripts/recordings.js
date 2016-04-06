@@ -57,5 +57,28 @@ $("#dropdown").prepend("Added to playlist!")
 })
 
 
+$("h3").on("click", "i", function(e){
+e.preventDefault();
+var $that = $(this)
+var $recordingid = $(".recording").data().recordings.id
+if($("h3 a").attr("html") ==  "/recordings/3/unlike"){
+  var url = "/recordings/"+$recordingid+"/unlike"
+  }
+else {
+   var url = "/recordings/"+$recordingid+"/like"
+ }
+  $.ajax({
+    type: 'PUT',
+    url: "/recordings/"+$recordingid+"/like",
+    data: $(this).children().serialize
+  }).done(function(response){
+    $("#like-container").html(response)
+
+    }).fail(function(error){debugger})
+  })
+
+
 });
+
+
 
