@@ -1,7 +1,7 @@
 <br>
 <br>
 <h3><%=link_to "Finish", root_path%></h3>
-
+<body>
 <%@recordings.each do |recording|%>
 <div id="song-panel" class="panel panel-default">
   <div class="panel-heading">
@@ -25,4 +25,5 @@
     <%= render partial: "recordings/tag", collection: recording.tag_list %>
   </div>
 </div>
+</body>
 <%end%>

@@ -30,14 +30,14 @@
 
   <div class="container">
     <div class="row content">
-        <div class="col-xs-6 col-md-3">
+        <div id="like-container" class="col-xs-6 col-md-3">
           <h3>
             <% if user_signed_in? && current_user.voted_for?(@recording) %>
-              <%= link_to unlike_recording_path(@recording), method: :put do %>
+              <%= link_to unlike_recording_path(@recording), method: :put, remote: true do %>
                 <i class="glyphicon glyphicon-heart" style="color:blue"></i>
               <% end %>
             <% else %>
-              <%= link_to like_recording_path(@recording), method: :put do %>
+              <%= link_to like_recording_path(@recording), method: :put, remote: true do %>
                <i class="glyphicon glyphicon-heart"></i>
               <% end %>
             <% end %>
