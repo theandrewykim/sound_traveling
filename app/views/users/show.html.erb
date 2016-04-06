@@ -4,7 +4,7 @@
 <div id="googleMap" style="width:40%;height:360px;"></div>
 <%end%>
 
-<%if !!current_user.following.include?(@user) %>
+<%if user_signed_in? && !!current_user.following.include?(@user) %>
 <%=link_to "#{@user.followers.length}- Unsubscribe", user_relationship_path(@user, Relationship.where(follower_id: @user.id,following_id:current_user.id)), :method => :delete%>
 <%else%>
 <%=link_to "#{@user.followers.length} Subscribe", user_relationships_path(@user), :method => :post%>
@@ -38,7 +38,7 @@
   this.id = id;
   this.created_at = created_at;
   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude),
-    icon: 'http://www120.lunapic.com/editor/working/145980453672967?7563273330'});
+    icon: './app/assets/images/headphones.svg'});
   this.infowindow = new google.maps.InfoWindow({content: '<a href="/recordings/'+this.id+'">'+this.title+'</a>'});
   this.marker.setMap(this.map);
   this.addListenerToMarker();

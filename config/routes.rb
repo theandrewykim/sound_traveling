@@ -3,15 +3,17 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   resources :recordings do
+     get :autocomplete_recording_title, on: :collection
     resources :comments
     member do
       put "like", to: "recordings#like"
       put "unlike", to: "recordings#unlike"
     end
-    get :autocomplete_tag_name, on: :collection
+
     resources :playlists, only: [:index] do
-    resources :playlistrecordings, only: [:create]
+      resources :playlistrecordings, only: [:create]
     end
+    get :autocomplete_tag_name, on: :collection
 
   end
 

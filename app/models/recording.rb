@@ -1,5 +1,15 @@
 class Recording < ActiveRecord::Base
+  scope :by_title, ->(regex){
+    where("title ~* ?", "#{Regexp.escape(regex)}")
+  }
 
+  scope :by_city, ->(regex){
+    where("city ~* ?", "#{Regexp.escape(regex)}")
+  }
+
+  scope :by_tag, ->(regex){
+    joins(:taggings, :tags).where("tags.name ~* ?", "#{Regexp.escape(regex)}").uniq
+  }
 
   belongs_to :user
 
@@ -14,8 +24,8 @@ class Recording < ActiveRecord::Base
   has_many :flag_users, through: :flags, source: :user
   has_many :like_users, through: :likes, source: :user
 
-  validates :title, presence: true
-  validates :user, presence: true
+  validates :title, :user, :sound, presence: true
+  validates :latitude, presence: { message: "Please pick a spot on the map" }
 
   has_attached_file :sound
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
