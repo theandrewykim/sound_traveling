@@ -10,7 +10,6 @@ class RecordingsController < ApplicationController
     render 'welcome/index'
   end
 
-
   def edit
   end
 
@@ -23,11 +22,10 @@ class RecordingsController < ApplicationController
 
   def create
     @recording = Recording.new(recording_params)
-    if  @recording.save
+    if @recording.save
       redirect_to recording_path(@recording)
     else
-      "ERROR"
-      # make validations
+      render :new
     end
   end
 
