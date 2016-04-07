@@ -4,32 +4,33 @@
   <%end%>
 </div>
 
+
 <div class="container">
 
-  <h1><%=@user.username%></h1>
-  <h2>Sounds Recorded</h2>
+  <div class="col-lg-3">
+    <%= render partial: 'users/user', locals: {user: @user} %>
+  </div>
 
-  <%if user_signed_in? && !!current_user.following.include?(@user) %>
-  <%=link_to "#{@user.followers.length}- Unsubscribe", user_relationship_path(@user, Relationship.where(follower_id: @user.id,following_id:current_user.id)), :method => :delete%>
-  <%else%>
-  <%=link_to "#{@user.followers.length} Subscribe", user_relationships_path(@user), :method => :post%>
-  <%end%>
 
-  <h3>Playlists</h3>
-  <%@user.playlists.each do |playlist|%>
-  <li><%=link_to playlist.name, playlist%></li>
-  <%if @user == current_user%>
-    <%=button_to "Delete", playlist, :method => :delete%>
-    <%=link_to "Edit", new_playlist_playlistrecording_path(playlist)%>
-  <%else%>
-  <%end%>
-  <%end%>
+  <div class="col-lg-9">
+      <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills" role="tablist">
+          <li role="presentation" class="active"><a href="#uploads" aria-controls="uploads" role="tab" data-toggle="tab">Uploads</a></li>
+          <li role="presentation"><a href="#likes" aria-controls="likes" role="tab" data-toggle="tab">Likes</a></li>
+          <li role="presentation"><a href="#following" aria-controls="settings" role="tab" data-toggle="tab">Following</a></li>
+        </ul>
 
-  <%= render @user.recordings %>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="uploads"><%= render @user.recordings %></div>
+          <div role="tabpanel" class="tab-pane" id="likes"><%= render @user.find_liked_items %></div>
+          <div role="tabpanel" class="tab-pane" id="following">  </div>
+        </div>
+      </div>
+  </div>
 
 </div>
-
-
 
 
 
@@ -56,8 +57,7 @@
   this.map = map;
   this.id = id;
   this.created_at = created_at;
-  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude),
-    icon: './app/assets/images/headphones.svg'});
+  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
   this.infowindow = new google.maps.InfoWindow({content: '<a href="/recordings/'+this.id+'">'+this.title+'</a>'});
   this.marker.setMap(this.map);
   this.addListenerToMarker();

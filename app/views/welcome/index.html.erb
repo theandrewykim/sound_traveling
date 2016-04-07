@@ -59,8 +59,7 @@
   this.map = map;
   this.id = id;
   this.created_at = created_at;
-  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude),
-    icon: './app/assets/images/headphones.svg'});
+  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
   this.infowindow = new google.maps.InfoWindow({content: '<a href="recordings/'+this.id+'">'+this.title+'</a>'});
   this.marker.setMap(this.map);
   this.addListenerToMarker();
