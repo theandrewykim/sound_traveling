@@ -6,7 +6,7 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new(follower_id: @user.id, followed_id: @followed_user.id)
     if @relationship.save
       # redirect_to user_path(@followed_user)
-      redirect_to :back
+      render "/users/_user.html.erb", locals: {user: @followed_user}, layout: false
     else
       "Error"
     end
@@ -14,9 +14,10 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @unsubbed_user = User.find(params[:user_id])
-    @follow = Relationship.where(follower_id: @unsubbed_user.id ,following_id:current_user.id)
-    @unsubbed_user.followers.delete(current_user)
+    @user = current_user
+    @follow = Relationship.where(follower_id: @unsubbed_user.id ,following_id:@user.id)
+    @unsubbed_user.followers.delete(@user)
     # redirect_to user_path(@unsubbed_user)
-    redirect_to :back
+    render "/users/_user.html.erb", locals: {user: @unsubbed_user}, layout:false
   end
 end

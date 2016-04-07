@@ -52,13 +52,13 @@ class RecordingsController < ApplicationController
   def like
     @recording = Recording.find(params[:id])
     @recording.liked_by current_user
-    render "_like.html.erb", layout: false
+    render "_like.html.erb", layout: false, locals: {recording: @recording}
   end
 
   def unlike
     @recording = Recording.find(params[:id])
     @recording.unliked_by current_user
-    render "_like.html.erb", layout: false
+    render "_like.html.erb", layout: false, locals: {recording: @recording}
   end
 
 private
