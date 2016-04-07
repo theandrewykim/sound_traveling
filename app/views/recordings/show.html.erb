@@ -36,7 +36,7 @@
           <span id="like-container" class="pull-right">
 
             <% if user_signed_in? && current_user.voted_for?(@recording) %>
-              <%= link_to unlike_recording_path(@recording), method: :put, remote: true do %>
+              <%= link_to unlike_recording_path(@recording), method: :put, id: "unlike", remote: true do %>
                 <i class="glyphicon glyphicon-heart" style="color:blue"></i>
               <% end %>
             <% else %>
