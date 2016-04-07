@@ -4,7 +4,6 @@ class Playlist < ActiveRecord::Base
   has_many :recordings, through: :playlistrecordings
 
   def has_recording?(recording)
-
     !!self.recordings.include?(recording)
   end
 

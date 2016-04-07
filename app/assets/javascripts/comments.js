@@ -17,6 +17,7 @@ $( document ).ready(function() {
       that.prepend(response)
       $("#new_comment")[0].reset()
       }).fail(function(error){
+        $('#loginModal').modal('show');
       })
 
   });
