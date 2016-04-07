@@ -21,6 +21,10 @@
                 </div>
 
                 <div class="field">
+                  <%= f.text_area :description %>
+                </div>
+
+                <div class="field">
                   <% if @minimum_password_length %>
                   <em>(<%= @minimum_password_length %> characters minimum)</em>
                   <% end %><br />
