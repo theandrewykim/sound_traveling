@@ -75,16 +75,17 @@ else {
   }).done(function(response){
    $("#like-container").html(response)
 
-    }).fail(function(error){debugger})
+    }).fail(function(error){
+      window.location.href = "/users/sign_in";
+    })
   })
 
 
 
 $(".container").on("click",".button_to", function(e){
   e.preventDefault()
-
   var $url = $(this).attr("action")
-  if($url == "/users/4/relationships"){
+  if($url ==  $(".button_to").attr("action")){
     var type = "POST"
   }
   else{
@@ -97,7 +98,9 @@ $(".container").on("click",".button_to", function(e){
   }).done(function(response){
    $("#follow-container").html(response)
 
-    }).fail(function(error){debugger})
+    }).fail(function(error){
+       window.location.href = "/users/sign_in";
+    })
 
 
 
