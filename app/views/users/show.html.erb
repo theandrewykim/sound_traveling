@@ -26,7 +26,7 @@
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane active" id="uploads"><%= render @user.recordings %></div>
           <div role="tabpanel" class="tab-pane" id="likes"><%= render @user.find_liked_items %></div>
-          <div role="tabpanel" class="tab-pane" id="following">  </div>
+          <div role="tabpanel" class="tab-pane" id="following"><%= render @user.following %></div>
         </div>
       </div>
   </div>
