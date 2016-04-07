@@ -7,7 +7,7 @@
 <div class="container">
 
   <div class="col-lg-3">
-    <%= render partial: 'users/user', locals: {user: @user} %>
+    <div id="follow-container1"><%= render partial: 'users/user', locals: {user: @user} %></div>
   </div>
 
 
@@ -34,42 +34,35 @@
 
 
 <script>
-// function initialize() {
-//   var mapProp = {
-//     zoom:0,
-//     mapTypeId:google.maps.MapTypeId.ROADMAP
-//   };
-//   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-// }
-// google.maps.event.addDomListener(window, 'load', initialize);
-
-      function initialize() {
-  function Location(latitude, longitude, title, created_at, id, map) {
-  this.latitude = latitude;
-  this.longitude = longitude;
-  this.title = title;
-  this.map = map;
-  this.id = id;
-  this.created_at = created_at;
-  this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
-  this.infowindow = new google.maps.InfoWindow({content: '<a href="/recordings/'+this.id+'">'+this.title+'</a>'});
-  this.marker.setMap(this.map);
-  this.addListenerToMarker();
-}
-Location.prototype.addListenerToMarker = function() {
-  this.marker.addListener('click', function() {
-    this.infowindow.open(this.map, this.marker);
-  }.bind(this));
-};
-    var locObjects
-    var data = $('.recording').data()
-    var mapProp = {
-      center: new google.maps.LatLng(51.508742,-50.520850),
-      zoom: 2,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    locObjects = data.recordings.map(function(location) { return new Location(location.latitude, location.
-    longitude, location.title, location.created_at, location.id, map) });
-  };
-  google.maps.event.addDomListener(window, 'load', initialize);</script>
+  // function initialize() {
+  //   function Location(latitude, longitude, title, created_at, id, map) {
+  //   this.latitude = latitude;
+  //   this.longitude = longitude;
+  //   this.title = title;
+  //   this.map = map;
+  //   this.id = id;
+  //   this.created_at = created_at;
+  //   this.marker = new google.maps.Marker({position: new google.maps.LatLng(this.latitude, this.longitude)});
+  //   this.infowindow = new google.maps.InfoWindow({content: '<a href="/recordings/'+this.id+'">'+this.title+'</a>'});
+  //   this.marker.setMap(this.map);
+  //   this.addListenerToMarker();
+  // }
+  // Location.prototype.addListenerToMarker = function() {
+  //   this.marker.addListener('click', function() {
+  //     this.infowindow.open(this.map, this.marker);
+  //   }.bind(this));
+  // };
+  //     var locObjects
+  //     var data = $('.recording').data()
+  //     var mapProp = {
+  //       center: new google.maps.LatLng(51.508742,-50.520850),
+  //       zoom: 2,
+  //       mapTypeId: google.maps.MapTypeId.ROADMAP
+  //     };
+  //     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  //     locObjects = data.recordings.map(function(location) { return new Location(location.latitude, location.
+  //     longitude, location.title, location.created_at, location.id, map) });
+  //   };
+  //   google.maps.event.addDomListener(window, 'load', initialize);
+  // debugger
+  </script>

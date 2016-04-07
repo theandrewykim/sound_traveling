@@ -1,5 +1,5 @@
 <% if playlist.has_recording?(recording) %>
-  <li><%= link_to playlist.name.titleize, playlist_playlistrecording_path(playlist, Playlistrecording.find_by(playlist_id: playlist.id, recording: recording)), method: 'DELETE', class: "disabled"  %></li>
+  <li><%= link_to playlist.name.titleize, recording_playlist_playlistrecording_path(recording, playlist, Playlistrecording.find_by(playlist_id: playlist.id, recording: recording)), method: 'DELETE', class: "disabled"  %></li>
 <% else %>
 <li><%= link_to playlist.name.titleize, recording_playlist_playlistrecordings_path(recording, playlist), method: 'POST' %></li>
 <% end %>
