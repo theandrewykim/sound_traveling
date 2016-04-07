@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
 
     resources :playlists, only: [:index] do
-      resources :playlistrecordings, only: [:create]
+      resources :playlistrecordings, only: [:create, :destroy]
     end
     get :autocomplete_tag_name, on: :collection
 
