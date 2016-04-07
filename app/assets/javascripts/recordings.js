@@ -61,21 +61,47 @@ $("h3").on("click", "i", function(e){
 e.preventDefault();
 var $that = $(this)
 var $recordingid = $(".recording").data().recordings.id
-if($("h3 a").attr("html") ==  "/recordings/3/unlike"){
-  var url = "/recordings/"+$recordingid+"/unlike"
+
+if($("h3 a").attr("href") ==  "/recordings/"+$recordingid+"/unlike"){
+    var url = "/recordings/"+$recordingid+"/unlike"
   }
 else {
    var url = "/recordings/"+$recordingid+"/like"
  }
   $.ajax({
     type: 'PUT',
-    url: "/recordings/"+$recordingid+"/like",
-    data: $(this).children().serialize
+    url: url,
+    data: $(this).serialize
   }).done(function(response){
-    $("#like-container").html(response)
+   $("#like-container").html(response)
 
     }).fail(function(error){debugger})
   })
+
+
+
+$(".container").on("click",".button_to", function(e){
+  e.preventDefault()
+
+  var $url = $(this).attr("action")
+  if($url == "/users/4/relationships"){
+    var type = "POST"
+  }
+  else{
+    var type = "DELETE"
+  }
+    $.ajax({
+    type: type,
+    url: $url,
+    data: $(this).serialize
+  }).done(function(response){
+   $("#follow-container").html(response)
+
+    }).fail(function(error){debugger})
+
+
+
+})
 
 
 });
