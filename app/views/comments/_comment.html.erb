@@ -4,7 +4,7 @@
   </div>
   <div class="commentText">
       <p class=""><%= comment.body %></p>
-      <span class="date sub-text"><%= comment.human_date %> by <%= link_to comment.user.username %>
+      <span class="date sub-text"><%= comment.human_date %> by <%= link_to comment.user.username, user_path(comment.user) %>
       <% if comment.is_owned_by?(current_user) %>
         <%= link_to recording_comment_path(@recording, comment), data: { confirm: 'Are you sure?' }, method: :delete do %>
           <i class="glyphicon glyphicon-trash"></i>
