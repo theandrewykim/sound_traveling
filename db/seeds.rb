@@ -22,15 +22,16 @@ end
 
 
 if create_admins
-  User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password )
-  User.create!(username: 'will', email: 'william@wvwproductions.com', password: password)
-  User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password)
+  User.create!(username: 'joe', email: 'josephcase@gmail.com', password: password, description: Faker::Lorem.paragraph(9))
+  User.create!(username: 'will', email: 'william@wvwproductions.com', password: password, description: Faker::Lorem.paragraph(9))
+  User.create!(username: 'andrew', email: 'theandrewkimm@gmail.com', password: password, description: Faker::Lorem.paragraph(9))
 end
 
 users_amount.times do
   User.create!(username: Faker::Internet.user_name,
                email: Faker::Internet.email,
-               password: password)
+               password: password,
+               description: Faker::Lorem.paragraph(9))
 end
 
 users = User.all
