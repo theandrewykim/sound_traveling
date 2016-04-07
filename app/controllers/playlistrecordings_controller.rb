@@ -10,8 +10,8 @@ class PlaylistrecordingsController < ApplicationController
     if !!params[:recording_id]
       @playlist = Playlist.find(params[:playlist_id])
       @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id:params[:recording_id] )
-      binding.pry
       if @playlistrecording.save
+        flash[:notice] = "That worked!"
         redirect_to :back
       else
         flash[:notice] = "That didn't work!"
@@ -31,9 +31,9 @@ class PlaylistrecordingsController < ApplicationController
   def destroy
     @playlistrecording = Playlistrecording.find(params[:id])
     @playlist = Playlist.find(params[:playlist_id])
-    @recording = Recording.find(params[:playlistrecording][:recording])
+    @recording = Recording.find(@playlistrecording.recording_id)
     if @playlistrecording.destroy
-      render '_trackbutton.html.erb', layout: false
+     redirect_to :back
     else
     end
   end
