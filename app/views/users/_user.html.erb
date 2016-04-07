@@ -3,7 +3,7 @@
     <%=image_tag("sound_traveling_512.png", :width => "50%") %>
   </div>
   <div>
-    <h3><%= user.username.titleize %> </h3>
+    <h3><%= link_to user.username.titleize, user_path(user) %> </h3>
   </div>
   <div>
       <span class="glyphicon glyphicon-user" width></span> <%= user.followers.count %>
