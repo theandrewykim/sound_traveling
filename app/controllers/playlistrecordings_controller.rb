@@ -10,10 +10,11 @@ class PlaylistrecordingsController < ApplicationController
     if !!params[:recording_id]
       @playlist = Playlist.find(params[:playlist_id])
       @playlistrecording = Playlistrecording.new(playlist_id: @playlist.id, recording_id:params[:recording_id] )
+      binding.pry
       if @playlistrecording.save
         redirect_to :back
       else
-        # error handing
+        flash[:notice] = "That didn't work!"
       end
     else
       @playlist = Playlist.find(params[:playlist_id])
