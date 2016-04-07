@@ -76,7 +76,7 @@ else {
    $("#like-container").html(response)
 
     }).fail(function(error){
-      window.location.href = "/users/sign_in";
+      $('#loginModal').modal('show');
     })
   })
 
@@ -99,7 +99,7 @@ $(".container").on("click",".button_to", function(e){
    $("#follow-container").html(response)
 
     }).fail(function(error){
-       window.location.href = "/users/sign_in";
+       $('#loginModal').modal('show');
     })
 
 
