@@ -13,7 +13,7 @@ class PlaylistrecordingsController < ApplicationController
       if @playlistrecording.save
         redirect_to :back
       else
-        # error handing
+        flash[:notice] = "That didn't work!"
       end
     else
       @playlist = Playlist.find(params[:playlist_id])

@@ -21,7 +21,7 @@
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
                 <li class="dropdown-header">Choose a playlist:</li>
-                <%= render current_user.playlists, locals: {recording: @recording} %>
+                <%= render partial: current_user.playlists, locals: {recording: @recording} %>
                 <li class="divider"></li>
                 <li><%= link_to "Create New", new_playlist_path %></li>
               </ul>
