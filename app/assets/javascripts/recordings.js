@@ -62,7 +62,7 @@ e.preventDefault();
 var $that = $(this)
 var $recordingid = $(".recording").data().recordings.id
 
-if($("h3 a").attr("href") ==  "/recordings/"+$recordingid+"/unlike"){
+if($("#unlike").attr("href") ==  "/recordings/"+$recordingid+"/unlike"){
     var url = "/recordings/"+$recordingid+"/unlike"
   }
 else {
