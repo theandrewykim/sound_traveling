@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SoundTraveling</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <script src="http://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY']%>&libraries=places"></script>
+  <head>
+    <title>SoundTraveling</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <script src="http://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY']%>&libraries=places"></script>
 
-  <!-- Bootstrap Mobile Tag -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Mobile Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 
-  <script type="text/javascript"> $(function ()
+  <header>
+    <%= yield(:search) %>
+  </header>
 
-  { $("#myModal").modal({show:false }); </script>
-</head>
+  <body>
+    <%= render 'layouts/nav'%>
+    <%= render "welcome/login_modal" %>
+    <%= render "welcome/sign_up_modal" %>
 
-<header>
-  <%= yield(:search) %>
-</header>
-
-<body>
-  <%= render 'layouts/nav'%>
-  <%= render "welcome/login_modal" %>
-  <%= render "welcome/sign_up_modal" %>
-
-  <div class="container-fluid">
-    <%= render 'layouts/flash_messages' %>
-    <%= yield %>
-  </div>
-
-
-</body>
+    <div class="container-fluid">
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

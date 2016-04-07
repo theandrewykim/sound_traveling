@@ -1,40 +1,39 @@
-<div class="modal hide fade in" id="login">
+<div class="modal fade in" id="loginModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">x</button>
 
-<div class="modal-header">
+        <h2>Sign in</h2>
+      </div>
 
-<button class="close" data-dismiss="modal">x</button>
+      <div class="modal-body">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <div class="input-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, :autofocus => true, class: "form-control" %>
+          </div>
 
-<h2>Sign in</h2>
+          <div class="input-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
 
-</div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field input-group">
+              <%= f.check_box :remember_me %>&nbsp;<%= f.label :remember_me %>
+            </div>
+          <% end -%>
 
-<div class="modal-body">
+          <div class="actions input-group">
+            <%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
+          </div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+          <hr />
 
-<div><%= f.label :email %><br />
-
-<%= f.email_field :email, :autofocus => true %></div>
-
-<div><%= f.label :password %><br />
-
-<%= f.password_field :password %></div>
-
-<% if devise_mapping.rememberable? -%>
-
-<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-
-<% end -%>
-
-<%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
-<% end %>
-
-</div>
-
-<div class="modal-footer">
-
-<%= render "devise/shared/links" %>
-
-</div>
-
+          <%= render "devise/shared/links", buttons: [:omniauth, :signup] %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

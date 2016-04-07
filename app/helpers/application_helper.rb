@@ -22,11 +22,15 @@ module ApplicationHelper
   end
 
   def resource_name
-    :user
+    resource_class.name.downcase.to_sym
   end
 
   def resource
-    @resource ||= User.new
+    @resource ||= resource_class.new
+  end
+
+  def resource_class
+    User
   end
 
   def devise_mapping
