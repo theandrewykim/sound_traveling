@@ -1,9 +1,21 @@
-  <div class="commenterImage">
-    <img src="http://lorempixel.com/50/50/people/7" />
+<div class="text-center">
+  <div>
+    <%=image_tag("sound_traveling_512.png", :width => "50%") %>
   </div>
-  <div class="commentText">
-    <H4> <%= link_to user.username, user_path(user) %> <span class="date sub-text"> Member since: <%= user.human_date %>
-    </span> </H4>
-      <p class="">description goes here</p>
+  <div>
+    <h3><%= user.username.titleize %> </h3>
+  </div>
+  <div>
+      <span class="glyphicon glyphicon-user" width></span> <%= user.followers.count %>
+
+      <span class="glyphicon glyphicon-globe"></span> <%= user.recordings.count %>
+  </div>
+  <div>
+                <%if user_signed_in? && !!current_user.following.include?(user) %>
+            <h5><%=button_to "Unfollow", user_relationship_path(user, Relationship.where(follower_id: user.id,following_id:current_user.id)), :method => :delete, class: "btn btn-primary"%></h5>
+            <%else%>
+            <h5><%=button_to "Follow", user_relationships_path(user), :method=> :post, class: "btn btn-primary"%></h5>
+            <%end%>
 
   </div>
+</div>
