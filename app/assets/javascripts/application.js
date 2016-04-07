@@ -17,7 +17,5 @@
 //= require flat.audio
 //= require jquery-ui/autocomplete
 //= require autocomplete-rails
-
-
 //= require_tree .
 

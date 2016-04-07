@@ -29,12 +29,22 @@ class PlaylistrecordingsController < ApplicationController
   end
 
   def destroy
-    @playlistrecording = Playlistrecording.find(params[:id])
-    @playlist = Playlist.find(params[:playlist_id])
-    @recording = Recording.find(@playlistrecording.recording_id)
-    if @playlistrecording.destroy
-     redirect_to :back
-    else
+     if !!params[:recording_id]
+        @playlistrecording = Playlistrecording.find(params[:id])
+        @playlist = Playlist.find(params[:playlist_id])
+        @recording = Recording.find(@playlistrecording.recording_id)
+        if @playlistrecording.destroy
+          redirect_to :back
+        else
+        end
+      else
+      @playlistrecording = Playlistrecording.find(params[:id])
+      @playlist = Playlist.find(params[:playlist_id])
+      @recording = Recording.find(params[:playlistrecording][:recording])
+      if @playlistrecording.destroy
+        render '_trackbutton.html.erb', layout: false
+      else
+     end
     end
   end
 end
