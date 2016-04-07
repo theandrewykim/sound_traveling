@@ -44,7 +44,7 @@ gem 'ransack'
 gem 'bootstrap_form'
 gem 'rails-jquery-autocomplete'
 gem 'jquery-ui-rails'
-
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal'
 
 
 
