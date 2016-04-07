@@ -30,7 +30,8 @@ class Recording < ActiveRecord::Base
   validates :title, :user, :sound, presence: true
   validates :latitude, presence: { message: "Please pick a spot on the map" }
 
-  has_attached_file :sound
+  has_attached_file :sound, storage: :s3, bucket: 'demotracks'
+
   validates_attachment_content_type :sound, content_type: ['audio/mpeg','audio/mp3']
 
   acts_as_taggable

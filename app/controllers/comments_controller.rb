@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
 
   def new
     @recording = Recording.find(params[:recording_id])
-    @comment = @recording.comments.new
+    # @comment = @recording.comments.new
   end
 
   def create

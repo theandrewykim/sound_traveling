@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
- console.log("whooo");
   $("#follow-container1").on("submit","form", function(e){
 
     e.preventDefault()
@@ -22,6 +21,8 @@ $(document).ready(function(){
     .done(function(response){
       $("#follow-container1").html(response)
     })
-    .fail(function(error){debugger})
+    .fail(function(error){
+
+    })
   })
 })

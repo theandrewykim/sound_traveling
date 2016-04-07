@@ -1,6 +1,6 @@
-create_admins = true
+create_admins = false
 
-users_amount      = 3
+users_amount      = 5
 recordings_amount = 30
 
 additional_tag_amount  = 15

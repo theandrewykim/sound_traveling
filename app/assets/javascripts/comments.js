@@ -9,6 +9,7 @@ $( document ).ready(function() {
     var that = $(".commentList");
 
     e.preventDefault();
+
     $.ajax({
       type: 'POST',
       url: url,
