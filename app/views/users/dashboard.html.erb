@@ -10,6 +10,7 @@
       <li role="presentation"><a href="#likes" aria-controls="likes" role="tab" data-toggle="tab">Likes</a></li>
       <li role="presentation"><a href="#uploads" aria-controls="uploads" role="tab" data-toggle="tab">Uploads</a></li>
       <li role="presentation"><a href="#following" aria-controls="settings" role="tab" data-toggle="tab">Following</a></li>
+      <li role="presentation"><a href="#playlists" aria-controls="settings" role="tab" data-toggle="tab">Playlists</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -18,6 +19,11 @@
       <div role="tabpanel" class="tab-pane" id="likes"><%= render @user.find_liked_items %></div>
       <div role="tabpanel" class="tab-pane" id="uploads"><%= render @user.recordings %></div>
       <div role="tabpanel" class="tab-pane" id="following"> <%= render @user.following %> </div>
+      <div role="tabpanel" class="tab-pane" id="playlists">
+        <% @user.playlists.each do |playlist| %>
+        <%= render partial: 'playlists/dashboard_playlist', locals: {playlist: playlist} %>
+        <% end %>
+      </div>
     </div>
   </div>
 
